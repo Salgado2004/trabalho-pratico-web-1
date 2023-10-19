@@ -8,13 +8,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <title>Word Runner!</title>
+
+    <link rel="stylesheet" href="style/game.css">
 </head>
 <body>
-    <canvas class="scene"></canvas>
-    <span class="player-place"></span>
-    <span class="lap-count"></span>
-    <button onclick="pause()">Pause</button>
-    <button onclick="play()">Play</button>
+    <header></header>
+    <main>
+        <div class="game">
+            <div>
+                <canvas class="scene"></canvas>
+                <span class="player-place"></span>
+                <span class="lap-count"></span>
+            </div>
+        </div>
+        <button onclick="pause()">Pause</button>
+        <button onclick="play()">Play</button>
+    </main>
+    <footer>
+
+    </footer>
 
     <script src="js/background.js"></script>
     <script src="js/car.js"></script>

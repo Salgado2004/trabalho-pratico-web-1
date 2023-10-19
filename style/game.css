@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+}
+
+.game{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+canvas{
+    border-radius: 10px;
+}
+
+.game div{
+    position: relative;
+    margin: 10px;
+}
+
+.player-place{
+    font-family: 'Black Ops One';
+    font-size: 18pt;
+    top: 10px;
+    right: 135px;
+    position: absolute;
+    color: white;
+}
+
+.lap-count{
+    font-family: 'Black Ops One';
+    font-size: 18pt;
+    top: 10px;
+    right: 25px;
+    position: absolute;
+    color: white;
+}
