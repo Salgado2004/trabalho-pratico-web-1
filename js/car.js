@@ -1,11 +1,14 @@
+const ranking = [];
 
 class car extends Sprite{
-    constructor({ position, source, speed}) {
-        super({ position, source, speed});
+    constructor({ position, source, speed, place}) {
+        super({ position, source, speed, place});
         this.position = position;
         this.image = new Image();
         this.image.src = source;
         this.speed = speed;
+        this.place = place;
+        this.lap = 1;
 
         this.height = this.image.height/3.5;
         this.width = this.image.width/3.5;
@@ -14,24 +17,31 @@ class car extends Sprite{
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
     }
     update() {
+        // order ranking by position
+        ranking.sort((a, b) => (a.position.x < b.position.x) ? 1 : -1);
+        // update place
+        ranking.forEach((car, index) => {
+            car.place = index+1;
+        });
         this.draw()
     }
 
     turbo(){
-        this.speed = 5;
+        this.speed += 3;
         setTimeout(() => {
-            this.speed = 2;
+            this.speed -= 3;
         }, 1000);
     }
 }
 
 class bot extends Sprite{
-    constructor({ position, source, speed}) {
-        super({ position, source, speed});
+    constructor({ position, source, speed, place}) {
+        super({ position, source, speed, place});
         this.position = position;
         this.image = new Image();
         this.image.src = source;
         this.speed = speed;
+        this.place = place;
 
         this.height = this.image.height/3.5;
         this.width = this.image.width/3.5;
@@ -54,6 +64,8 @@ const player = new car({
     speed: 2
 });
 
+ranking.push(player);
+
 const competitor = new bot({
     position: {
         x: 80,
@@ -62,3 +74,5 @@ const competitor = new bot({
     source: "img/carros/carro2.png",
     speed: 2.5
 });
+
+ranking.push(competitor);
