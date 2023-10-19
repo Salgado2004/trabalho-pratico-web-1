@@ -20,7 +20,7 @@ class car extends Sprite{
     turbo(){
         this.speed = 5;
         setTimeout(() => {
-            this.speed = 1;
+            this.speed = 2;
         }, 1000);
     }
 }
@@ -51,7 +51,7 @@ const player = new car({
         y: 576/2-40
     },
     source: "img/carros/carro1.png",
-    speed: 1
+    speed: 2
 });
 
 const competitor = new bot({
@@ -60,5 +60,5 @@ const competitor = new bot({
         y: 576/2+40
     },
     source: "img/carros/carro2.png",
-    speed: 1.5
+    speed: 2.5
 });
