@@ -30,7 +30,16 @@ function animate(){
     //console.log(`FPS: ${fps}`);
 }
 
+let dificuldade = "facil";
+
 function play(){
+    fetch("assets/words.json")
+        .then(response => response.json())
+        .then(json => {
+            let possibleWords = json.palavras[dificuldade];
+            generateWords(possibleWords);
+        });
+
     animate();
 }
 
