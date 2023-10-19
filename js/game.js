@@ -21,9 +21,9 @@ function animate(){
 
     background.update();
     road.forEach(roadSegment => roadSegment.update());
-    words.forEach(word => word.update());
     player.update();
     competitor.update();
+    words.forEach(word => word.update());
 
     playerPlace.textContent = player.place+"º Posição";
     lapCount.textContent = "Volta: "+player.lap;

@@ -8,6 +8,8 @@ class word extends Sprite{
     }
     draw() {
         ctx.font = "40px 'Black Ops One'";
+        ctx.fillStyle = "black";
+        ctx.fillText(this.text, this.position.x+3, this.position.y+2);
         ctx.fillStyle = "yellow";
         ctx.fillText(this.text, this.position.x, this.position.y);
         ctx.strokeStyle = "red";
