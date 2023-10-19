@@ -9,6 +9,9 @@ scene.height = canvasHeight;
 
 let prevTime = 0;
 
+const playerPlace = document.querySelector(".player-place");
+const lapCount = document.querySelector(".lap-count");
+
 
 function animate(){
     window.requestAnimationFrame(animate);
@@ -21,6 +24,9 @@ function animate(){
     words.forEach(word => word.update());
     player.update();
     competitor.update();
+
+    playerPlace.textContent = player.place;
+    lapCount.textContent = player.lap;
 
     // FPS
     let delta = (performance.now() - prevTime)/1000;
