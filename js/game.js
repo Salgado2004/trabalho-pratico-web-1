@@ -25,8 +25,8 @@ function animate(){
     player.update();
     competitor.update();
 
-    playerPlace.textContent = player.place;
-    lapCount.textContent = player.lap;
+    playerPlace.textContent = player.place+"º Posição";
+    lapCount.textContent = "Volta: "+player.lap;
 
     // FPS
     let delta = (performance.now() - prevTime)/1000;

@@ -35,13 +35,12 @@ class car extends Sprite{
 }
 
 class bot extends Sprite{
-    constructor({ position, source, speed, place}) {
-        super({ position, source, speed, place});
+    constructor({ position, source, speed}) {
+        super({ position, source, speed});
         this.position = position;
         this.image = new Image();
         this.image.src = source;
         this.speed = speed;
-        this.place = place;
 
         this.height = this.image.height/3.5;
         this.width = this.image.width/3.5;
