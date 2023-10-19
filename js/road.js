@@ -24,22 +24,14 @@ class roadSegment extends Sprite{
     }
 }
 
-let roadSegment1 = new roadSegment({
-    id: 0,
-    position: {
-        x: 0,
-        y: 113
-    },
-    source: "img/roads/start.jpg"
-});
-
-road.push(roadSegment1);
-
-for (i=1; i*segmentLenght<=1024; i++){
-    if(i%6==0){
+for (i=0; i<=18; i++){
+    if(i%3==0){
         img = "img/roads/street2.jpg";
     }else{
         img = "img/roads/street1.jpg";
+    }
+    if (i == 3){
+        img = "img/roads/start.jpg";
     }
     road.push(
         new roadSegment({
