@@ -1,14 +1,15 @@
 class Sprite {
-    constructor({ position, velocity, dimensions}) {
+    constructor({ position, velocity, dimensions, source}) {
         this.position = position
         this.velocity = velocity
         this.width = dimensions?.width
         this.height = dimensions?.height
+        this.image = new Image()
+        this.image.src = source
     }
 
     draw() {
-        ctx.fillStyle = "#8ce99a"
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
     }
 
     update() {
@@ -24,5 +25,6 @@ const background = new Sprite({
     dimensions: {
         width: 1024,
         height: 576
-    }
+    },
+    source: "img/roads/background.png"
 })
