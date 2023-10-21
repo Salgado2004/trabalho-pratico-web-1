@@ -27,7 +27,7 @@ canvas{
     font-family: 'Black Ops One';
     font-size: 18pt;
     top: 10px;
-    right: 135px;
+    right: 145px;
     position: absolute;
     color: white;
 }
@@ -36,7 +36,15 @@ canvas{
     font-family: 'Black Ops One';
     font-size: 18pt;
     top: 10px;
-    right: 25px;
+    right: 20px;
     position: absolute;
     color: white;
+}
+
+.time{
+    font-family: 'Black Ops One';
+    font-size: 18pt;
+    top: 10px;
+    left: 10px;
+    position: absolute;
 }
