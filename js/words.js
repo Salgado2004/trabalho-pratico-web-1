@@ -20,6 +20,9 @@ class word extends Sprite{
         this.position.x -= player.speed;
         if (this.position.x <= player.position.x+player.width){
             this.remove();
+            if (player.speed > 0.5){
+                player.speed -= 0.5;
+            }
         } else {
             this.draw();
         }
@@ -53,7 +56,7 @@ function randomPositionY(){
 
 function generateWords(possibleWords){
     //every 2 seconds there's a new word
-    setInterval(() => {
+    let wordcreator = setInterval(() => {
         let newWord = new word({
             position: {
                 x: randomPositionX(),
@@ -61,8 +64,10 @@ function generateWords(possibleWords){
             },
             text: possibleWords[Math.floor(Math.random() * possibleWords.length)].toUpperCase()
         });
-        words.push(newWord);
-    }, 3500);
+        if (words.length < 6){
+            words.push(newWord);
+        }
+    }, 2000);
 
     // Add event listener to keyboard
     window.addEventListener("keydown", (e) => {
