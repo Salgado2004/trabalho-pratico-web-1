@@ -1,4 +1,6 @@
 const ranking = [];
+const competitors = [];
+const lanes = [576/2+70, 576/2-40, 576/2-150];
 
 class car extends Sprite{
     constructor({ position, source, speed, place}) {
@@ -15,6 +17,9 @@ class car extends Sprite{
     }
     draw() {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText("Player", this.position.x+this.width/2-50, this.position.y-10);
     }
     update() {
         // order ranking by position
@@ -27,20 +32,20 @@ class car extends Sprite{
     }
 
     turbo(){
-        this.speed += 3;
+        this.speed = 5;
         setTimeout(() => {
-            this.speed -= 3;
+            this.speed = 2;
         }, 1000);
     }
 }
 
 class bot extends Sprite{
-    constructor({ position, source, speed}) {
-        super({ position, source, speed});
+    constructor({ position, source}) {
+        super({ position, source});
         this.position = position;
         this.image = new Image();
         this.image.src = source;
-        this.speed = speed;
+        this.speed = Math.random() * (3.5 - 2.5) + 2.5;
 
         this.height = this.image.height/3.5;
         this.width = this.image.width/3.5;
@@ -51,6 +56,10 @@ class bot extends Sprite{
     update() {
         this.position.x += this.speed-player.speed;
         this.draw()
+    }
+
+    updateSpeed(){
+        this.speed = Math.random() * (3.5 - 2.5) + 2.5;
     }
 }
 
@@ -65,13 +74,16 @@ const player = new car({
 
 ranking.push(player);
 
-const competitor = new bot({
-    position: {
-        x: 80,
-        y: 576/2+40
-    },
-    source: "img/carros/carro2.png",
-    speed: 2.5
-});
-
-ranking.push(competitor);
+for (i=0; i<3; i++){
+    let carImg = Math.floor(Math.random() * (6 - 1) + 1);
+    let newBot = new bot({
+        position: {
+            x: 100,
+            y: lanes[i]
+        },
+        source: `img/carros/carro${carImg}.png`
+    });
+    console.log(newBot);
+    competitors.push(newBot);
+    ranking.push(newBot);
+}
