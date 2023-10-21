@@ -39,10 +39,10 @@ class car extends Sprite{
     }
 
     penalty(){
-        this.speed = 1;
+        this.speed = 0.5;
         setTimeout(() => {
             this.speed = 2;
-        }, 500);
+        }, 250);
     }
 }
 
