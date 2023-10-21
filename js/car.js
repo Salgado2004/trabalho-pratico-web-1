@@ -37,6 +37,13 @@ class car extends Sprite{
             this.speed = 2;
         }, 1000);
     }
+
+    penalty(){
+        this.speed = 1;
+        setTimeout(() => {
+            this.speed = 2;
+        }, 500);
+    }
 }
 
 class bot extends Sprite{
