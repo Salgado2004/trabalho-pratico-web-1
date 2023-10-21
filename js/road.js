@@ -15,10 +15,23 @@ class roadSegment extends Sprite{
     draw() {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
     }
+
+    // check if the player is in this segment
+    check(){
+        if (player.position.x >= this.position.x && player.position.x <= this.position.x+segmentLenght){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     update() {
         this.position.x -= player.speed;
         if (this.position.x <= -segmentLenght){
             this.position.x = 1024;
+        }
+        if (this.id == 3 && this.check()){
+            countLap();
         }
         this.draw()
     }
