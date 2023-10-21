@@ -20,9 +20,7 @@ class word extends Sprite{
         this.position.x -= player.speed;
         if (this.position.x <= player.position.x+player.width){
             this.remove();
-            if (player.speed > 0.5){
-                player.speed -= 0.5;
-            }
+            player.penalty();
         } else {
             this.draw();
         }
