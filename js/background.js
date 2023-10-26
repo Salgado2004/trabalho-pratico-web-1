@@ -1,3 +1,5 @@
+let style = "desert";
+
 class Sprite {
     constructor({ position, velocity, dimensions, source}) {
         this.position = position
@@ -26,5 +28,5 @@ const background = new Sprite({
         width: 1024,
         height: 576
     },
-    source: "img/roads/background.png"
+    source: `img/roads/${style}/background.png`
 })
