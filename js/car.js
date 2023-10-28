@@ -75,7 +75,7 @@ const player = new car({
         x: 100,
         y: 576/2-40
     },
-    source: "img/carros/carro1.png",
+    source: "assets/img/carros/carro1.png",
     speed: 2
 });
 
@@ -88,7 +88,7 @@ for (i=0; i<3; i++){
             x: 100,
             y: lanes[i]
         },
-        source: `img/carros/carro${carImg}.png`
+        source: `assets/img/carros/carro${carImg}.png`
     });
     console.log(newBot);
     competitors.push(newBot);

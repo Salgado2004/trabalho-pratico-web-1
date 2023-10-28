@@ -39,12 +39,12 @@ class roadSegment extends Sprite{
 
 for (i=0; i<=18; i++){
     if(i%3==0){
-        img = `img/roads/${style}/street2.jpg`;
+        img = `assets/img/roads/${style}/street2.jpg`;
     }else{
-        img = `img/roads/${style}/street1.jpg`;
+        img = `assets/img/roads/${style}/street1.jpg`;
     }
     if (i == 3){
-        img = `img/roads/${style}/start.jpg`;
+        img = `assets/img/roads/${style}/start.jpg`;
     }
     road.push(
         new roadSegment({
