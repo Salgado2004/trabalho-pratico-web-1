@@ -28,5 +28,5 @@ const background = new Sprite({
         width: 1024,
         height: 576
     },
-    source: `img/roads/${style}/background.png`
+    source: `assets/img/roads/${style}/background.png`
 })
