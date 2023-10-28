@@ -16,7 +16,6 @@ class roadSegment extends Sprite{
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
     }
 
-    // check if the player is in this segment
     check(){
         if (player.position.x >= this.position.x && player.position.x <= this.position.x+segmentLenght){
             return true;

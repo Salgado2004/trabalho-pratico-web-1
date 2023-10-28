@@ -41,16 +41,16 @@ class car extends Sprite{
     }
 
     turbo(){
-        this.speed = 5;
+        this.speed = baseSpeed*2.5;
         setTimeout(() => {
-            this.speed = 2;
+            this.speed = baseSpeed;
         }, 1000);
     }
 
     penalty(){
-        this.speed = 0.5;
+        this.speed = baseSpeed/2;
         setTimeout(() => {
-            this.speed = 2;
+            this.speed = baseSpeed;
         }, 250);
     }
 }
@@ -68,7 +68,10 @@ class bot extends Sprite{
             this.width = this.image.width/3.5;
         }
 
-        this.speed = Math.random() * (3.5 - 2.5) + 2.5;
+        let maxSpeed = baseSpeed+1.5;
+        let minSpeed = baseSpeed+0.5;
+
+        this.speed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
 
         // if the image breaks, the car is a square
         this.height = 80;
@@ -83,7 +86,7 @@ class bot extends Sprite{
     }
 
     updateSpeed(){
-        this.speed = Math.random() * (3.5 - 2.5) + 2.5;
+        this.speed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
     }
 }
 
@@ -93,7 +96,7 @@ const player = new car({
         y: 576/2-40
     },
     source: "assets/img/carros/carro1.png",
-    speed: 2
+    speed: baseSpeed
 });
 
 ranking.push(player);

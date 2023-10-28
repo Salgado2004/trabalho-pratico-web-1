@@ -4,12 +4,15 @@ const ctx = scene.getContext("2d");
 const canvasWidth = 1024;
 const canvasHeight = 576;
 
+let goAudio;
+
 scene.width = canvasWidth;
 scene.height = canvasHeight;
 
 const time = {
     minuto: 0,
-    segundo: 0
+    segundo: 0,
+    totalSegundos: 0
 }
 
 let lastLap = 0;
@@ -37,6 +40,10 @@ function animate(){
     playerPlace.textContent = player.place+"º Posição";
     lapCount.textContent = "Volta: "+player.lap;
 
+    if (time.minuto == tempoMax || player.lap == voltasMax){
+        finish();
+    }
+
 }
 
 async function play(){
@@ -44,10 +51,11 @@ async function play(){
         let response = await fetch("assets/words.json");
         let json = await response.json();
         let possibleWords = json.palavras[dificuldade];
-        generateWords(possibleWords);
+        wordsInterval = generateWords(possibleWords);
 
         seconds = setInterval(() => {
             time.segundo++;
+            time.totalSegundos++;
             if(time.segundo == 60){
                 time.segundo = 0;
                 time.minuto++;
@@ -71,6 +79,8 @@ function countLap(){
 }
 
 function start(){
+    let startAudio = new Audio("assets/music/start.mp3");
+    startAudio.play();
     let banner = document.querySelector(".banner");
     banner.innerHTML = "<span>Se prepare!</span>";
     // countdown from 3 to 0 and then call play()
@@ -84,6 +94,45 @@ function start(){
             banner.innerHTML = "<span>"+countdown+"</span>";
             countdown--;
         }
-    }, 1500);
+    }, 1800);
+    startAudio.onended = () => {
+        goAudio = new Audio(`assets/music/${estilo}.mp3`);
+        goAudio.play();
+    }
+}
+
+function finish(){
+    clearInterval(seconds);
+    clearInterval(wordsInterval);
+
+    let finalPlace = player.place;
+
+    switch (finalPlace){
+        case 1:
+            bonusPosition = 100;
+            break;
+        case 2:
+            bonusPosition = 50;
+            break;
+        case 3:
+            bonusPosition = 25;
+            break;
+        default:
+            bonusPosition = 0;
+            break;
+    }
+    points = ((wordsWritten-wordsLost)*10)+((tempoMax*60)-time.totalSegundos)+bonusPosition;
+
+    let banner = document.createElement("div");
+    banner.classList.add("banner");
+    banner.innerHTML = `
+    <span>Fim de jogo!</span>
+    <h2>Você terminou em ${finalPlace}º Lugar!</h2>
+    <h3>Palavras escritas: +${wordsWritten}</h3>
+    <h3>Palavras perdidas: -${wordsLost}</h3>
+    <h3>Bônus de tempo: +${(tempoMax*60)-time.totalSegundos}</h3>
+    <h3>Bônus de posição: +${bonusPosition}</h3>
+    <h2>Total: ${points}</h2>`;
+    document.body.appendChild(banner);
 }
 
