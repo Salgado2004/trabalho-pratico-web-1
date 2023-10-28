@@ -1,9 +1,8 @@
 let style = estilo;
 
 class Sprite {
-    constructor({ position, velocity, dimensions, source}) {
+    constructor({ position, dimensions, source}) {
         this.position = position
-        this.velocity = velocity
         this.width = dimensions?.width
         this.height = dimensions?.height
         this.image = new Image()

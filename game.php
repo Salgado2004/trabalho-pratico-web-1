@@ -2,15 +2,28 @@
     $nomeJogador = $_POST['nome-jogador'];
     $estilo = $_POST['estilo'];
     $dificuldade = $_POST['dificuldade'];
+    $tempo = $_POST['tempo'];
+    $voltas = $_POST['voltas'];
 
     if ($nomeJogador == null || ''){
         $nomeJogador = 'Jogador';
+    } else{
+        $nomeJogador[0] = strtoupper($nomeJogador[0]);
+    }
+
+    switch($dificuldade){
+        case 'facil':
+            $baseSpeed = 2;
+            break;
     }
 
     echo "<script>
         const nomeJogador = '$nomeJogador';
         const estilo = '$estilo';
         const dificuldade = '$dificuldade';
+        const tempoMax = $tempo;
+        const voltasMax = $voltas;
+        const baseSpeed = $baseSpeed;
     </script>"
 ?>
 <!DOCTYPE html>

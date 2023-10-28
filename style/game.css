@@ -29,9 +29,11 @@ canvas{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    padding: 5px;
     z-index: 2;
     width: 35%;
-    height: 165px;
+    height: 185px;
     left: calc(50% - 17.5%);
     top: calc(50% - 82.5px);
     border-radius: 10px;

@@ -1,4 +1,6 @@
 const words = [];
+let wordsWritten =0;
+let wordsLost=0;
 
 class word extends Sprite{
     constructor({ position, text}) {
@@ -20,6 +22,7 @@ class word extends Sprite{
         this.position.x -= player.speed;
         if (this.position.x <= player.position.x+player.width){
             this.remove();
+            wordsLost++;
             player.penalty();
         } else {
             this.draw();
@@ -31,6 +34,7 @@ class word extends Sprite{
             this.text = this.text.slice(1);
             if(this.text.length == 0){
                 player.turbo();
+                wordsWritten++;
                 this.remove();
             }
         }
@@ -53,8 +57,8 @@ function randomPositionY(){
 }
 
 function generateWords(possibleWords){
-    //every 2 seconds there's a new word
-    setInterval(() => {
+    //a cada 1.5 segundo, gera uma palavra aleatória
+    let wordInterval = setInterval(() => {
         let newWord = new word({
             position: {
                 x: randomPositionX(),
@@ -62,14 +66,15 @@ function generateWords(possibleWords){
             },
             text: possibleWords[Math.floor(Math.random() * possibleWords.length)].toUpperCase()
         });
-        if (words.length < 6){
+        if (words.length < 8){
             words.push(newWord);
         }
-    }, 2000);
+    }, 1500);
 
-    // Add event listener to keyboard
     window.addEventListener("keydown", (e) => {
         words.forEach(word => word.write(e.key));
     });
+
+    return wordInterval;
 }
 
