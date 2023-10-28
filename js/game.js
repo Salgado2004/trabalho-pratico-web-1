@@ -39,10 +39,7 @@ function animate(){
 
 }
 
-let dificuldade = "facil";
-
 async function play(){
-
     try{
         let response = await fetch("assets/words.json");
         let json = await response.json();

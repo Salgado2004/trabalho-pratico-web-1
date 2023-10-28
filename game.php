@@ -1,3 +1,13 @@
+<?php 
+    $nomeJogador = $_POST['nome-jogador'];
+    $estilo = $_POST['estilo'];
+    $dificuldade = $_POST['dificuldade'];
+    echo "<script>
+        const nomeJogador = '$nomeJogador';
+        const estilo = '$estilo';
+        const dificuldade = '$dificuldade';
+    </script>"
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
