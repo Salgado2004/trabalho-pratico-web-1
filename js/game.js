@@ -41,30 +41,26 @@ function animate(){
 
 let dificuldade = "facil";
 
-function play(){
-    if (player.width == 0){
-        window.location.reload();
-    }
-    competitors.forEach(bot => {
-        if (bot.width == 0){
-            window.location.reload();
-        }
-    });
-    seconds = setInterval(() => {
-        time.segundo++;
-        if(time.segundo == 60){
-            time.segundo = 0;
-            time.minuto++;
-        }
-    }, 1000);
-    fetch("assets/words.json")
-        .then(response => response.json())
-        .then(json => {
-            let possibleWords = json.palavras[dificuldade];
-            generateWords(possibleWords);
-        });
+async function play(){
 
-    animate();
+    try{
+        let response = await fetch("assets/words.json");
+        let json = await response.json();
+        let possibleWords = json.palavras[dificuldade];
+        generateWords(possibleWords);
+
+        seconds = setInterval(() => {
+            time.segundo++;
+            if(time.segundo == 60){
+                time.segundo = 0;
+                time.minuto++;
+            }
+        }, 1000);
+        animate();
+
+    } catch (err){
+        console.log(err);
+    }
 }
 
 function countLap(){
