@@ -2,6 +2,11 @@
     $nomeJogador = $_POST['nome-jogador'];
     $estilo = $_POST['estilo'];
     $dificuldade = $_POST['dificuldade'];
+
+    if ($nomeJogador == null || ''){
+        $nomeJogador = 'Jogador';
+    }
+
     echo "<script>
         const nomeJogador = '$nomeJogador';
         const estilo = '$estilo';
@@ -22,6 +27,10 @@
 <body>
     <header></header>
     <main>
+        <div class="banner">
+            <h1>Word Runner!</h1>
+            <button onclick="start()">Começar!</button>
+        </div>
         <div class="game">
             <div>
                 <canvas class="scene"></canvas>
@@ -30,8 +39,6 @@
                 <span class="lap-count"></span>
             </div>
         </div>
-        <button onclick="pause()">Pause</button>
-        <button onclick="play()">Play</button>
     </main>
     <footer>
 

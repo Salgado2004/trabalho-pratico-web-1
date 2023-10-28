@@ -70,11 +70,20 @@ function countLap(){
     }
 }
 
-function pause(){
-    window.cancelAnimationFrame(animate);
-    player.speed = 0;
-    competitors.forEach(bot => bot.speed = 0);
-    clearInterval(wordcreator);
+function start(){
+    let banner = document.querySelector(".banner");
+    banner.innerHTML = "<span>Se prepare!</span>";
+    // countdown from 3 to 0 and then call play()
+    let countdown = 3;
+    let countdownInterval = setInterval(() => {
+        if (countdown == 0){
+            clearInterval(countdownInterval);
+            banner.remove();
+            play();
+        } else{
+            banner.innerHTML = "<span>"+countdown+"</span>";
+            countdown--;
+        }
+    }, 1500);
 }
 
-play();
