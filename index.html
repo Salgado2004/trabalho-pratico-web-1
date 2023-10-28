@@ -7,6 +7,25 @@
 </head>
 <body>
     <h1>Word Runner</h1>
-    <a href="game.html">Jogar</a>
+    <p>Word Runner é um jogo de corrida de palavras, onde o jogador deve digitar as palavras que aparecem na tela para que o carro ande.</p>
+    <form class="game-settings" action="game.php" method="post">
+        <label for="nome-jogador">Nome do jogador:</label>
+        <input type="text" name="nome-jogador" id="nome-jogador" required>
+        <br>
+        <label for="estilo">Cenário:</label>
+        <select name="estilo" id="estilo">
+            <option value="default">Estrada</option>
+            <option value="desert">Deserto</option>
+        </select>
+        <br>
+        <label for="dificuldade">Dificuldade:</label>
+        <input type="radio" name="dificuldade" id="facil" value="facil" checked>
+        <label for="facil">Fácil</label>
+        <input type="radio" name="dificuldade" id="medio" value="medio">
+        <label for="medio">Médio</label>
+        <input type="radio" name="dificuldade" id="dificil" value="dificil">
+        <label for="dificil">Difícil</label>
+        <button type="submit">Jogar</button>
+    </form>
 </body>
 </html>

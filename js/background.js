@@ -1,4 +1,4 @@
-let style = "desert";
+let style = estilo;
 
 class Sprite {
     constructor({ position, velocity, dimensions, source}) {

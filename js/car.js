@@ -28,7 +28,7 @@ class car extends Sprite{
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
         ctx.font = "20px Arial";
         ctx.fillStyle = "white";
-        ctx.fillText("Player", this.position.x+this.width/2-50, this.position.y-10);
+        ctx.fillText(nomeJogador, this.position.x+this.width/2-50, this.position.y-10);
     }
     update() {
         // order ranking by position
