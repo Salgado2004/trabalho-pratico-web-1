@@ -6,14 +6,23 @@ class car extends Sprite{
     constructor({ position, source, speed, place}) {
         super({ position, source, speed, place});
         this.position = position;
+
         this.image = new Image();
         this.image.src = source;
+
+        this.image.onload = () => {
+            this.height = this.image.height/3.5;
+            this.width = this.image.width/3.5;
+        }
+
         this.speed = speed;
         this.place = place;
         this.lap = 1;
 
-        this.height = this.image.height/3.5;
-        this.width = this.image.width/3.5;
+        // if the image breaks, the car is a square
+        this.height = 80;
+        this.width = 80;
+        
     }
     draw() {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
@@ -50,12 +59,20 @@ class bot extends Sprite{
     constructor({ position, source}) {
         super({ position, source});
         this.position = position;
+
         this.image = new Image();
         this.image.src = source;
+
+        this.image.onload = () => {
+            this.height = this.image.height/3.5;
+            this.width = this.image.width/3.5;
+        }
+
         this.speed = Math.random() * (3.5 - 2.5) + 2.5;
 
-        this.height = this.image.height/3.5;
-        this.width = this.image.width/3.5;
+        // if the image breaks, the car is a square
+        this.height = 80;
+        this.width = 80;
     }
     draw() {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)

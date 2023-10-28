@@ -54,7 +54,7 @@ function randomPositionY(){
 
 function generateWords(possibleWords){
     //every 2 seconds there's a new word
-    let wordcreator = setInterval(() => {
+    setInterval(() => {
         let newWord = new word({
             position: {
                 x: randomPositionX(),
