@@ -2,3 +2,18 @@
     font-family: 'Black Ops One';
     src: url('../assets/fonts/BlackOpsOne-Regular.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Formula 1 regular';
+    src: url('../assets/fonts/Formula1-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Formula 1 bold';
+    src: url('../assets/fonts/Formula1-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Formula 1 wide';
+    src: url('../assets/fonts/Formula1-Wide.otf') format('opentype');
+}
