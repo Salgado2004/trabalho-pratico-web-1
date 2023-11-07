@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+    if (!isset($_SESSION['nome_usuario'])) {
+        session_destroy();
+        header("Location: index.html");
+    }
+
+    $nomeUsuario = $_SESSION['nome_usuario'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +23,9 @@
         <fieldset>
             <legend>Jogador</legend>
             <label for="nome-jogador">Nome do jogador:</label>
-            <input type="text" name="nome-jogador" id="nome-jogador">
+            <?php
+              echo '<input type="text" name="nome-jogador" id="nome-jogador" value="'.$nomeUsuario.'" disabled>';
+            ?>
         </fieldset>
         <fieldset>
             <legend>Circuito</legend>

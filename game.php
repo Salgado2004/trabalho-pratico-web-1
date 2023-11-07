@@ -1,5 +1,12 @@
 <?php 
-    $nomeJogador = $_POST['nome-jogador'];
+
+    session_start();
+    if (!isset($_SESSION['nome_usuario'])) {
+        session_destroy();
+        header("Location: index.html");
+    }
+
+    $nomeJogador = $_SESSION['nome_usuario'];
     $estilo = $_POST['estilo'];
     $dificuldade = $_POST['dificuldade'];
     $tempo = $_POST['tempo'];
