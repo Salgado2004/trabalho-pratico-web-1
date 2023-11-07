@@ -3,40 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Runner!</title>
+    <title>Word Runner</title>
+    <link rel="stylesheet" href="style/fonts.css">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-    <h1>Word Runner</h1>
-    <p>Word Runner é um jogo de corrida de palavras, onde o jogador deve digitar as palavras que aparecem na tela para que o carro ande.</p>
-    <form class="game-settings" action="game.php" method="post">
-        <fieldset>
-            <legend>Jogador</legend>
-            <label for="nome-jogador">Nome do jogador:</label>
-            <input type="text" name="nome-jogador" id="nome-jogador">
-        </fieldset>
-        <fieldset>
-            <legend>Circuito</legend>
-            <label for="estilo">Cenário:</label>
-            <select name="estilo" id="estilo">
-                <option value="default">Estrada</option>
-                <option value="desert">Deserto</option>
-            </select>
-            <label for="voltas">Voltas:</label>
-            <input type="number" name="voltas" id="voltas" min="10" max="15" value="15" required>
-        </fieldset>
-        <fieldset>
-            <legend>Modo do jogo</legend>
-            <label for="tempo">Tempo:</label>
-            <input type="number" name="tempo" id="tempo" min="1" max="3" value="2" required>
-            <label for="dificuldade">Dificuldade:</label>
-            <input type="radio" name="dificuldade" id="facil" value="facil" checked>
-            <label for="facil">Fácil</label>
-            <input type="radio" name="dificuldade" id="medio" value="medio">
-            <label for="medio">Médio</label>
-            <input type="radio" name="dificuldade" id="dificil" value="dificil">
-            <label for="dificil">Difícil</label>
-        </fieldset>
-        <button type="submit">Jogar</button>
-    </form>
+    <header>
+        <div class="logo">
+            <h1>Word Runner!</h1>
+        </div>
+        <div class="login">
+            <a href="login.php">Login</a>
+        </div>
+    </header>
+    <main>
+        <p>Word Runner é um jogo de corrida de palavras, onde o jogador deve digitar<br>
+        as palavras que aparecem na tela para que o carro ande mais rápido!<br>
+        Quanto mais rápido o carro andar, mais pontos o jogador ganha!<br>
+        Se o jogador errar uma palavra, o carro perde velocidade!<br>
+        Use seus pontos para subir em rankings das ligas!</p>
+        <br>
+        <p>Para jogar, é necessário login</p>
+    </main>
+    <footer>
+        &copy; TADS UFPR 2023;
+    </footer>
 </body>
 </html>
