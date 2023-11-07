@@ -32,13 +32,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Word Runner!</title>
+    <title>Word Runner | Game</title>
 
     <link rel="stylesheet" href="style/fonts.css">
     <link rel="stylesheet" href="style/game.css">
 </head>
 <body>
-    <header></header>
     <main>
         <div class="banner">
             <h1>Word Runner!</h1>
@@ -53,9 +52,6 @@
             </div>
         </div>
     </main>
-    <footer>
-
-    </footer>
 
     <script src="js/background.js"></script>
     <script src="js/car.js"></script>
