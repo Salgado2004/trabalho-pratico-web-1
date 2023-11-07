@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-main{
+body{
+    background-color: #252525;
 }
 
 .game{
@@ -37,24 +38,29 @@ canvas{
     left: calc(50% - 17.5%);
     top: calc(50% - 82.5px);
     border-radius: 10px;
-    border: 2px solid red;
-    background-color: #d8f0f0;
+    border: 2px solid #D9D9D9;
+    background-color: #252525;
 }
 
 .banner h1{
     position: absolute;
     top: 2px;
-    left: 2px;
+    left: 6px;
+    color: #D9D9D9;
+    font-family: 'Black Ops One';
 }
 
 .banner button{
-    padding: 5px;
-    background-color:darkslateblue;
-    border-radius: 5px;
-    border: 2px solid white;
-    color: white;
-    font-size: 16pt;
-    font-weight: bold;
+    padding: 5px 0;
+    width: 85%;
+    border-radius: 10px;
+    background: #D9D9D9;
+    color: #252525;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-family: 'Formula 1 regular';
+    font-size: 11pt;
     cursor: pointer;
 }
 
@@ -63,6 +69,18 @@ canvas{
     font-size: 26pt;
     color: yellow;
     filter: drop-shadow(1px 1px 2px red);
+}
+
+.banner h2{
+    font-family: 'Formula 1 regular';
+    font-size: 14pt;
+    color: #D9D9D9;
+}
+
+.banner h3{
+    font-family: 'Formula 1 regular';
+    font-size: 11pt;
+    color: #D9D9D9;
 }
 
 .player-place{
