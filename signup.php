@@ -21,10 +21,12 @@
                 <div class="form-input">
                     <label for="email-user">Email:</label>
                     <input type="email" name="email-log" id="email-log" placeholder="Seu email aqui">
+                    <p class="erro-input"><?php echo $erro_email; ?></p>
                 </div>
                 <div class="form-input">
                     <label for="senha-user">Senha:</label>
                     <input type="password" name="senha-log" id="senha-log" placeholder="Sua senha aqui">
+                    <p class="erro-input"><?php echo $erro_senha; ?></p>
                 </div>
                 <button type="submit">Entrar</button>
             </form>
