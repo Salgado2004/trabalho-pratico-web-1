@@ -26,6 +26,34 @@
             "descer",
             "nevada",
             "sábado"
+        ],
+        "medio":[
+            "gangorra",
+            "cachorro",
+            "cachimbo",
+            "criança",
+            "horóscopo",
+            "cachoeira",
+            "tangerina",
+            "abóbora",
+            "elipse",
+            "humanidade",
+            "sabedoria"
+        ],
+        "dificil":[
+            "hipotérmico",
+            "inconstitucional",
+            "inconstitucionalissimamente",
+            "helicóptero",
+            "paralelepípedo",
+            "parassintético",
+            "hipopotomonstrosesquipedaliofobia",
+            "pneumoultramicroscopicossilicovulcanoconiótico",
+            "ictionssauro",
+            "dislalia",
+            "autralopitecus",
+            "fibromialgia",
+            "belíssimo"
         ]
     }
 }
