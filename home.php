@@ -47,7 +47,7 @@
             <input type="radio" name="dificuldade" id="medio" value="medio">
             <label for="medio">Médio</label>
             <input type="radio" name="dificuldade" id="dificil" value="dificil">
-            <label for="dificil">Difícil</label>
+            <label for="dificil">Impossível</label>
         </fieldset>
         <button type="submit">Jogar</button>
     </form>

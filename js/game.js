@@ -5,6 +5,7 @@ const canvasWidth = 1024;
 const canvasHeight = 576;
 
 let goAudio;
+let end = false;
 
 scene.width = canvasWidth;
 scene.height = canvasHeight;
@@ -102,37 +103,54 @@ function start(){
 }
 
 function finish(){
-    clearInterval(seconds);
-    clearInterval(wordsInterval);
+    if (!end){
+        end = true;
+        clearInterval(seconds);
+        clearInterval(wordsInterval);
 
-    let finalPlace = player.place;
+        let finalPlace = player.place;
 
-    switch (finalPlace){
-        case 1:
-            bonusPosition = 100;
-            break;
-        case 2:
-            bonusPosition = 50;
-            break;
-        case 3:
-            bonusPosition = 25;
-            break;
-        default:
-            bonusPosition = 0;
-            break;
+        switch (finalPlace){
+            case 1:
+                bonusPosition = 100;
+                break;
+            case 2:
+                bonusPosition = 50;
+                break;
+            case 3:
+                bonusPosition = 25;
+                break;
+            default:
+                bonusPosition = 0;
+                break;
+        }
+        points = ((wordsWritten-wordsLost)*10)+((tempoMax*60)-time.totalSegundos)+bonusPosition;
+
+        switch(dificuldade){
+            case "facil":
+                points *= 1;
+                break;
+            case "medio":
+                points *= 1.5;
+                break;
+            case "dificil":
+                points *= 2;
+                break;
+        }
+
+        points = points > 0 ? Math.floor(points) : 0;
+
+        let banner = document.createElement("div");
+        banner.classList.add("banner");
+        banner.innerHTML = `
+        <span>Fim de jogo!</span>
+        <h2>Você terminou em ${finalPlace}º Lugar!</h2>
+        <h3>Palavras escritas: +${wordsWritten}</h3>
+        <h3>Palavras perdidas: -${wordsLost}</h3>
+        <h3>Bônus de tempo: +${(tempoMax*60)-time.totalSegundos}</h3>
+        <h3>Bônus de posição: +${bonusPosition}</h3>
+        <h2>Total: ${points}</h2>`;
+        document.body.appendChild(banner);
     }
-    points = ((wordsWritten-wordsLost)*10)+((tempoMax*60)-time.totalSegundos)+bonusPosition;
-
-    let banner = document.createElement("div");
-    banner.classList.add("banner");
-    banner.innerHTML = `
-    <span>Fim de jogo!</span>
-    <h2>Você terminou em ${finalPlace}º Lugar!</h2>
-    <h3>Palavras escritas: +${wordsWritten}</h3>
-    <h3>Palavras perdidas: -${wordsLost}</h3>
-    <h3>Bônus de tempo: +${(tempoMax*60)-time.totalSegundos}</h3>
-    <h3>Bônus de posição: +${bonusPosition}</h3>
-    <h2>Total: ${points}</h2>`;
-    document.body.appendChild(banner);
 }
 
