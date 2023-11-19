@@ -30,16 +30,18 @@
         id int auto_increment primary key,
         nome varchar(20) not null unique,
         email varchar(40) not null unique,
-        senha varchar(20) not null,
-        imagem varchar(50) null,
+        senha varchar(256) not null,
+        imagem int null,
+        carro int default 0,
         fk_liga int null
     );
 
     create table liga (
         id int auto_increment primary key,
         nome varchar(20) not null unique,
-        senha varchar(20) not null,
-        imagem varchar(50) null,
+        senha varchar(256),
+        private boolean not null,
+        imagem int null,
         fk_criador int not null
     );
 
@@ -47,7 +49,7 @@
         id int auto_increment primary key,
         modo_jogo boolean not null,
         tempo time,
-        pountuacao int,	
+        pountuacao int not null,
         data_reg timestamp,
         fk_usuario int not null
     );
