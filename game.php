@@ -9,8 +9,6 @@
     $nomeJogador = $_SESSION['nome_usuario'];
     $estilo = $_POST['estilo'];
     $dificuldade = $_POST['dificuldade'];
-    $tempo = $_POST['tempo'];
-    $voltas = $_POST['voltas'];
 
     if ($nomeJogador == null || ''){
         $nomeJogador = 'Jogador';
@@ -22,8 +20,8 @@
         const nomeJogador = '$nomeJogador';
         const estilo = '$estilo';
         const dificuldade = '$dificuldade';
-        const tempoMax = $tempo;
-        const voltasMax = $voltas;
+        const tempoMax = 2;
+        const voltasMax = 10;
         const baseSpeed = 2;
     </script>"
 ?>
@@ -53,6 +51,9 @@
             </div>
         </div>
     </main>
+    <footer>
+        &copy; TADS UFPR 2023;
+    </footer>
 
     <script src="js/background.js"></script>
     <script src="js/car.js"></script>
