@@ -78,6 +78,11 @@ legend{
     cursor: pointer;
 }
 
+#erro-input {
+    color: chartreuse;
+    
+}
+
 footer{
     position: absolute;
     text-align: center;
