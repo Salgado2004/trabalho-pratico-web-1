@@ -10,6 +10,7 @@
         header("Location: ../user/user.php");
     }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
 <body>
     <header>
         <a class="edition" href="#">Alterar Senha</a>
-        <a class="edition" href="#">Editar Perfil</a>
+        <a class="edition" href="edit_user.php">Editar Perfil</a>
         <div class="exclude">
             <a href="#">Excluir Perfil</a>
         </div>
@@ -34,8 +35,9 @@
             <div id="user-img">
                 <img src="../assets/img/user/user.bmp" alt="User">
             </div>
-            <h3>Nome: <?php echo $_SESSION['nome_usuario']; ?></h2>
-            <h5>Email: <?php echo $_SESSION['email_usuario']; ?></h3>
+            <h3>Nome: <?php echo $_SESSION['nome_usuario']; ?></h3>
+            <p>Email: <?php echo $_SESSION['email_usuario']; ?></p>
+            <p>Liga: <?php echo $_SESSION['liga_usuario']; ?></p>
         </section>
         <section id="extra-info">
             <div id="user-car">
