@@ -1,0 +1,105 @@
+body{
+    background-color: #252525;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header #profile{
+    color: #D9D9D9;
+    font-family: 'Formula 1 regular';
+    font-size: 14pt;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+header #profile:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+header .sair{
+    display: flex;
+    background-color: #d63c3c;
+    padding: 6px 12px;
+    margin: 8px;
+    border-radius: 10px;
+}
+
+header .sair a{
+    color: #D9D9D9;
+    font-family: 'Formula 1 regular';
+    font-size: 16pt;
+    text-decoration: none;
+}
+
+main{
+    margin-top: calc(50vh - 230px);
+    width: 576px;
+    height: 460px;
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+    background: #252525;
+}
+
+h3{
+    color: #D9D9D9;
+    text-align: center;
+    font-family: "Formula 1 regular";
+    font-size: 40px;
+    font-weight: 400;
+    margin: 5px;
+}
+
+nav{
+    width: 100%;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul li a{
+    font-family: "Formula 1 regular";
+    font-size: 15px;
+    text-decoration: none;
+    color: #D9D9D9;
+    cursor: pointer;
+}
+
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+.active{
+    background-color: #D9D9D9;
+    color: #252525;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+
+#main-menu{
+    width: 100%;
+    height: 80%;
+}
+
+footer{
+    position: absolute;
+    bottom: 0px;
+    padding: 5px;
+    color: #D9D9D9;
+    font-family: 'Formula 1 regular';
+}
