@@ -24,47 +24,11 @@
       echo "Error creating database: " . mysqli_error($conn) . "<br>";
   }
 
-  // sql to create table
-  $sql = "
-    create table usuario (
-        id int auto_increment primary key,
-        nome varchar(20) not null unique,
-        email varchar(40) not null unique,
-        senha varchar(256) not null,
-        imagem int null,
-        carro int default 0,
-        fk_liga int null
-    );
+  // get tables from tables.sql file
+  $sql = file_get_contents('tables.sql');
 
-    create table liga (
-        id int auto_increment primary key,
-        nome varchar(20) not null unique,
-        senha varchar(256),
-        private boolean not null,
-        imagem int null,
-        fk_criador int not null
-    );
-
-    create table pontuacao (
-        id int auto_increment primary key,
-        modo_jogo boolean not null,
-        tempo time,
-        pountuacao int not null,
-        data_reg timestamp,
-        fk_usuario int not null
-    );
-
-    alter table usuario add constraint fk_liga_usuario
-    foreign key (fk_liga) references liga(id);
-
-    alter table liga add constraint fk_usuario_1
-    foreign key (fk_criador) references usuario(id);
-
-    alter table pontuacao add constraint fk_usuario_2
-    foreign key (fk_usuario) references usuario(id);";
-
-  if (mysqli_query($conn, $sql)) {
-      echo "Table Comments created successfully<br>";
+  if (mysqli_multi_query($conn, $sql)) {
+      echo "Tables created successfully<br>";
   } else {
       echo "Error creating table: " . mysqli_error($conn) . "<br>";
   }
