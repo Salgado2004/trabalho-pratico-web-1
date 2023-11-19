@@ -77,3 +77,8 @@ legend{
     font-family: 'Formula 1 regular';
     cursor: pointer;
 }
+
+#erro-input {
+    color: chartreuse;
+    
+}
