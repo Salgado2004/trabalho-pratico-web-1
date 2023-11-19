@@ -26,7 +26,7 @@ class car extends Sprite{
     }
     draw() {
         ctx.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
-        ctx.font = "20px Arial";
+        ctx.font = "20px 'Formula 1 regular'";
         ctx.fillStyle = "white";
         ctx.fillText(nomeJogador, this.position.x+this.width/2-50, this.position.y-10);
     }
