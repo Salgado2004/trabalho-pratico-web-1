@@ -108,3 +108,13 @@ canvas{
     left: 10px;
     position: absolute;
 }
+
+footer{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 0px;
+    padding: 5px 0;
+    color: #D9D9D9;
+    font-family: 'Formula 1 regular';
+}
