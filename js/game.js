@@ -107,23 +107,29 @@ function finish(){
         end = true;
         clearInterval(seconds);
         clearInterval(wordsInterval);
+        goAudio.pause();
 
         let finalPlace = player.place;
 
         switch (finalPlace){
             case 1:
                 bonusPosition = 100;
+                finalAudio = new Audio("assets/music/final1.mp3");
                 break;
             case 2:
                 bonusPosition = 50;
+                finalAudio = new Audio("assets/music/final1.mp3");
                 break;
             case 3:
                 bonusPosition = 25;
+                finalAudio = new Audio("assets/music/final2.mp3");
                 break;
             default:
                 bonusPosition = 0;
+                finalAudio = new Audio("assets/music/final2.mp3");
                 break;
         }
+        finalAudio.play();
         points = ((wordsWritten-wordsLost)*10)+((tempoMax*60)-time.totalSegundos)+bonusPosition;
 
         switch(dificuldade){
@@ -135,6 +141,9 @@ function finish(){
                 break;
             case "dificil":
                 points *= 2;
+                break;
+            case "impossivel":
+                points *= 10;
                 break;
         }
 
@@ -151,6 +160,16 @@ function finish(){
         <h3>Bônus de posição: +${bonusPosition}</h3>
         <h2>Total: ${points}</h2>`;
         document.body.appendChild(banner);
+
+        let request = new XMLHttpRequest();
+        request.open("POST", "endgame.php", true);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.send(`points=${points}`);
+
+        setTimeout(() => {
+            window.location.href = "home/home.php";
+        }, 10000);
+
     }
 }
 
