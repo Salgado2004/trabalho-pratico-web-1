@@ -12,8 +12,13 @@
             "Confirmação de senha é obrigatória.",
             "Confirmação de senha deve ser igual à senha."
         ];
-    $erro_log = $_GET['e'];
-    $erro_cad = $_GET['E'];
+
+    if (isset($_GET['e'])){
+        $erro_log = $_GET['e'];
+    }
+    if (isset($_GET['E'])){
+        $erro_cad = $_GET['E'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +43,9 @@
                     <label for="senha-user">Senha:</label>
                     <input type="password" name="senha-log" id="senha-log" placeholder="Sua senha aqui">
                 </div>
+                <?php if (isset($erro_log)):?>
                 <p class="erro-input"><?php echo $erros[$erro_log]; ?></p>
+                <?php endif; ?>
                 <button type="submit">Entrar</button>
             </form>
             <form id="cadastro" action="cadastro.php" method="post">
@@ -59,7 +66,9 @@
                     <label for="senha-confirm">Confirmar Senha:</label>
                     <input type="password" name="senha-confirm" id="senha-confirm" placeholder="Confirme sua senha aqui">
                 </div>
+                <?php if (isset($erro_cad)):?>
                 <p class="erro-input"><?php echo $erros[$erro_cad]; ?></p>
+                <?php endif; ?>
                 <button type="submit">Cadastrar</button>
             </form>
         </div>

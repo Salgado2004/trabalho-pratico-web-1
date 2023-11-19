@@ -34,7 +34,7 @@
         $_SESSION['existe_liga'] = false;
         $_SESSION['email_usuario'] = $_POST['email-user'];
         $_SESSION['liga_usuario'] = "Sem liga";
-        header("Location: user/edit_user.php");}
+        header("Location: home/home.php");}
     else {
         header("Location: signup.php/?e=" . $erro);
     }
