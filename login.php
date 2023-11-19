@@ -31,6 +31,9 @@
     if (!$erro) {  
         session_start();
         $_SESSION['nome_usuario'] = "User";
+        $_SESSION['existe_liga'] = false;
+        $_SESSION['email_usuario'] = $_POST['email-user'];
+        $_SESSION['liga_usuario'] = "Sem liga";
         header("Location: user/edit_user.php");}
     else {
         header("Location: signup.php/?e=" . $erro);
@@ -38,5 +41,3 @@
 }
 
 ?>
-
-
