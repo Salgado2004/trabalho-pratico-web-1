@@ -50,6 +50,9 @@
             </form>
         </div>
     </main>
+    <footer>
+        &copy; TADS UFPR 2023;
+    </footer>
 
 </body>
 </html>

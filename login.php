@@ -2,7 +2,10 @@
 
     session_start();
     $_SESSION['nome_usuario'] = "Usuário";
-    header("Location: home.php");
+    $_SESSION['existe_liga'] = false;
+    $_SESSION['email_usuario'] = $_POST['email-user'];
+    $_SESSION['liga_usuario'] = "Sem liga";
+    header("Location: home/home.php");
 
 ?>
 
