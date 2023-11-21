@@ -33,7 +33,7 @@
     <main id="profile">
         <section id="main-info">
             <div id="user-img">
-                <img src="../assets/img/user/user.bmp" alt="User">
+                <img src="../assets/img/profiles/user2.png" alt="User">
             </div>
             <h3>Nome: <?php echo $_SESSION['nome_usuario']; ?></h3>
             <p>Email: <?php echo $_SESSION['email_usuario']; ?></p>
