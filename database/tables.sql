@@ -3,8 +3,8 @@
         nome varchar(20) not null unique,
         email varchar(40) not null unique,
         senha varchar(256) not null,
-        imagem int null,
-        carro int default 0,
+        imagem int default 1,
+        carro int default 1,
         fk_liga int null
     );
 
@@ -13,7 +13,7 @@
         nome varchar(20) not null unique,
         senha varchar(256),
         private boolean not null,
-        imagem int null,
+        imagem int default 1,
         fk_criador int not null
     );
 
