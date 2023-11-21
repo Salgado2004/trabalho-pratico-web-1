@@ -32,7 +32,7 @@
         session_start();
         $_SESSION['nome_usuario'] = "User";
         $_SESSION['existe_liga'] = false;
-        $_SESSION['email_usuario'] = $_POST['email-user'];
+        $_SESSION['email_usuario'] = $email;
         $_SESSION['liga_usuario'] = "Sem liga";
         header("Location: home/home.php");}
     else {
