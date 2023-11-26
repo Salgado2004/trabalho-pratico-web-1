@@ -30,9 +30,9 @@
     }
 
     if ($_GET['scope'] == "geral"){
-        $sql = "SELECT nome, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id GROUP BY usuario.id ORDER BY pontuacao DESC;";
+        $sql = "SELECT nome, imagem, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id GROUP BY usuario.id ORDER BY pontuacao DESC;";
     } else{
-        $sql = "SELECT nome, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id WHERE usuario.fk_liga = " . $_SESSION['liga_usuario'] . " GROUP BY usuario.id ORDER BY pontuacao DESC";
+        $sql = "SELECT nome, imagem, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id WHERE usuario.fk_liga = " . $_SESSION['liga_usuario'] . " GROUP BY usuario.id ORDER BY pontuacao DESC";
     }
 
     $ranking = array();
@@ -55,21 +55,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Runner | Ranking</title>
+
+    <link rel="stylesheet" href="../style/fonts.css">
+    <link rel="stylesheet" href="../style/ranking.css">
 </head>
 <body>
-    <?php ?>
-    <table>
-        <tr>
-            <th>Posição</th>
-            <th>Nome</th>
-            <th>Pontuação</th>
-        </tr>
-        <?php $posicao = 1; foreach($ranking as $usuario) : ?>
+    <main>
+        <table>
             <tr>
-                <td><?php echo $posicao; ?>º</td>
-                <td><?php echo $usuario['nome']; ?></td>
-                <td><?php echo $usuario['pontuacao']; ?></td>
+                <th>Posição</th>
+                <th>Usuário</th>
+                <th>Pontuação</th>
             </tr>
-        <?php $posicao++; endforeach; ?>
+            <?php $posicao = 1; foreach($ranking as $usuario) : ?>
+                <tr>
+                    <td><?php echo $posicao; ?>º</td>
+                    <td>
+                        <div class="user">
+                        <img class="img_perfil" src="../assets/img/profiles/user<?php echo $usuario['imagem']; ?>.png" alt="Foto de perfil">
+                        <?php echo $usuario['nome']; ?>
+                        </div>
+                    </td>
+                    <td><?php echo $usuario['pontuacao']; ?> pts</td>
+                </tr>
+            <?php $posicao++; endforeach; ?>
+        </table>
+    </main>
 </body>
 </html>
