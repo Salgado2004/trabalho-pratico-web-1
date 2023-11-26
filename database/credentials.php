@@ -2,5 +2,5 @@
   $servername = "localhost";
   $username = "root";
   $password = "password";
-  $dbname = "WordRunner;";
+  $dbname = "WordRunner";
 ?>
