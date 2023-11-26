@@ -59,10 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
               if (!mysqli_query($conn, $sql)) {
                 $erro = 9;
-              } else {
-                echo "<br>Usuario inserido com sucesso<br>";
               }
-
               $sql = "SELECT id FROM usuario WHERE email = '" . $email . "'";
               if (!mysqli_query($conn, $sql)) {
                 die("Error connecting to database: " . mysqli_error($conn) . "<br>");
@@ -81,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-
+  mysqli_close($conn);
   if (!$erro) {
     session_start();
     $_SESSION['id_usuario'] = $id[0];
@@ -90,12 +87,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['email_usuario'] = $email;
     $_SESSION['liga_usuario'] = "Sem liga";
     $_SESSION['estiloCarro'] = 1;
-    mysqli_close($conn);
+    
     header("Location: user/edit_user.php");
   } else {
-    mysqli_close($conn);
     header("Location: signup.php/?ec=" . $erro);
   }
-
-  mysqli_close($conn);
 }
