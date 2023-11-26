@@ -16,7 +16,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="vNot Found
+
+The requested resource /database/entrarLiga.php was not found on this server.iewport" content="width=device-width, initial-scale=1.0">
     <title>World Runner | Profile</title>
     <link rel="stylesheet" href="../style/fonts.css">
 </head>
