@@ -1,10 +1,5 @@
 <?php
-  function verifica_campo($texto){
-      $texto = trim($texto);
-      $texto = stripslashes($texto);
-      $texto = htmlspecialchars($texto);
-      return $texto;
-    }
+  require('verifica_campo.php');
 
   $nome = "";
   $email = "";
@@ -13,7 +8,16 @@
 
   
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
+    require("database/credentials.php");
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+      die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
+    }
+
+    $sql = "use $dbname";
+    if (!mysqli_query($conn, $sql)) {
+      echo "Error connecting to database: " . mysqli_error($conn) . "<br>";
+    }
     if(empty($_POST["email-log"])){
       $erro = 1;
     }
@@ -24,22 +28,11 @@
       $erro = 3;
     }
     else{
-      $email = verifica_campo($_POST["email-log"]);
-      $senha = verifica_campo($_POST["senha-log"]);
+      $email = verifica_campo($conn, $_POST["email-log"]);
+      $senha = verifica_campo($conn, $_POST["senha-log"]);
     }
 
     if (!$erro) {  
-      require("database/credentials.php");
-      $conn = mysqli_connect($servername, $username, $password, $dbname);
-      if (!$conn) {
-        die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
-      }
-
-      $sql = "use $dbname";
-      if (!mysqli_query($conn, $sql)) {
-        echo "Error connecting to database: " . mysqli_error($conn) . "<br>";
-      }
-
       $sql = "SELECT * FROM usuario WHERE email = '$email'";
       if (mysqli_query($conn, $sql)) {
         $result = mysqli_query($conn, $sql);
@@ -59,6 +52,7 @@
             $_SESSION['email_usuario'] = $email;
             $_SESSION['liga_usuario'] = $liga;
             $_SESSION['estiloCarro'] = $row['carro'];
+            mysqli_close($conn);
             header("Location: home/home.php");
           }
           else {
@@ -77,6 +71,8 @@
     } else {
       header("Location: signup.php?el=" . $erro);
     }
+
+    mysqli_close($conn);
 }
 
 ?>
