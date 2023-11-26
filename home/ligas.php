@@ -53,10 +53,14 @@
         <table>
         <?php foreach($ligas as $liga) : ?>
             <tr>
-                <td><?php echo $liga['nome']; ?>
-                <?php if ($liga['private']==1) : ?>
-                    <span class="material-symbols-outlined">lock</span>
-                <?php endif; ?>
+                <td>
+                    <div>
+                        <img src="../assets/img/profiles/liga1.webp" alt="Liga">
+                        <?php echo $liga['nome']; ?>
+                        <?php if ($liga['private']==1) : ?>
+                            <span class="material-symbols-outlined">lock</span>
+                        <?php endif; ?>
+                    </div>
                 </td>
                 <td>
                     <form action="../database/entrarLiga.php" method="post">

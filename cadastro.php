@@ -1,11 +1,12 @@
 <?php
 require('database/credentials.php');
 
-function verifica_campo($texto)
+function verifica_campo($conn, $texto)
 {
   $texto = trim($texto);
   $texto = stripslashes($texto);
   $texto = htmlspecialchars($texto);
+  $texto = mysqli_real_escape_string($conn, $texto);
   return $texto;
 }
 
@@ -57,10 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result) {
           $erro = 13;
         } else {
-          $nome = verifica_campo($_POST["nome-cad"]);
-          $email = verifica_campo($_POST["email-cad"]);
-          $senha = verifica_campo($_POST["senha-cad"]);
-          $senha_conf = verifica_campo($_POST["senha-conf"]);
+          $nome = verifica_campo($conn, $_POST["nome-cad"]);
+          $email = verifica_campo($conn, $_POST["email-cad"]);
+          $senha = verifica_campo($conn, $_POST["senha-cad"]);
+          $senha_conf = verifica_campo($conn, $_POST["senha-conf"]);
 
           $sql = "INSERT INTO usuario (nome, email, senha) VALUES ('" . $nome . "', '" . $email . "', '" . md5($senha) . "')";
 
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['liga_usuario'] = "Sem liga";
     header("Location: user/edit_user.php");
   } else {
-    header("Location: signup.php/?ec=" . $erro);
+    header("Location: signup.php?ec=" . $erro);
   }
 
   mysqli_close($conn);
