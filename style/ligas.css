@@ -1,0 +1,60 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 85dvh;
+    overflow-y: scroll;
+}
+
+main::-webkit-scrollbar{
+    width: 8px;
+}
+
+main::-webkit-scrollbar-track{
+    background-color: #252525;
+}
+
+main::-webkit-scrollbar-thumb{
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    border: white;
+}
+
+table{
+    width: 95%;
+    background-color: #252525;
+}
+
+table tr:nth-child(odd){
+    background-color: #1e1e1e;
+}
+
+table td{
+    padding: 6px;
+    color: #d9d9d9;
+    font-family: 'Formula 1 regular';
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+form button{
+    width: 90%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    font-family: 'Formula 1 regular';
+    cursor: pointer;
+}
+
+#criarLiga{
+    position: fixed;
+    bottom: 0;
+}     
