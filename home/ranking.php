@@ -6,9 +6,9 @@
         header("Location: ../index.html");
     }
 
-    if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/home.php" || !isset($_GET['scope'])){
+   /*  if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/home.php" || !isset($_GET['scope'])){
         header("Location: ../home/home.php");
-    }
+    } */
 
     if ($_GET['scope'] != "geral" && $_GET['scope'] != "liga"){
         header("Location: ../home/home.php");

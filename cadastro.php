@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $erro = 4;
     } else if ($_POST["senha-cad"]) {
       $erro = 5;
-    } else if (!preg_match('@[A-Z]@', $_POST["senha-cad"])) {
+    } else if (!preg_match('[A-Z]', $_POST["senha-cad"])) {
       $erro = 5;
     } else if (empty($_POST["senha-confirm"])) {
       $erro = 7;
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['liga_usuario'] = "Sem liga";
     header("Location: user/edit_user.php");
   } else {
-    header("Location: signup.php?E=" . $erro);
+    header("Location: signup.php?ec=" . $erro);
   }
 
   mysqli_close($conn);
