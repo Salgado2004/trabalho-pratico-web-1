@@ -25,8 +25,8 @@ insert into liga (nome, senha, private, imagem, fk_criador) values
 insert into liga (nome, private, imagem, fk_criador) values
 ("Os Vingadores", 0, 5, 5),
 ("Invencíveis", 0, 6, 6),
-("Word Eaters", 0, 7, 7),
-("Pneus Flamejantes", 0, 8, 8);
+("Word Eaters", 0, 5, 7),
+("Pneus Flamejantes", 0, 6, 8);
 
 /*Update all usuarios, add fk_liga (accepts values from 1 to 8)*/
 update usuario set fk_liga = 1 where id = 1;
