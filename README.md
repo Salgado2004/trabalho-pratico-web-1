@@ -44,13 +44,13 @@ A qualquer momento, o usuário pode acessar um relatório com os dados de todas 
 A aplicação desenvolvida deve atender os seguintes requisitos:
 
  **Front-end**:
-  - [ ] Uso de HTML5, CSS3 e JS;
-  - [ ] Interface amigável;
+  - [x] Uso de HTML5, CSS3 e JS;
+  - [x] Interface amigável;
   - [ ] Validação de campos de formulário;
-  - [ ] Implementação do Jogo de digitação completamente em JS;
+  - [x] Implementação do Jogo de digitação completamente em JS;
       
  **Back-end**:
-  - [ ] Integração com um banco de dados;
+  - [x] Integração com um banco de dados;
   - [ ] Sistema de autenticação/autorização de usuário(s) salvo(s) em banco de dados;
   - [ ] Validação de campos de formulário e outras informações recebidas.
 

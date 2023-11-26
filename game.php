@@ -9,6 +9,7 @@
     $nomeJogador = $_SESSION['nome_usuario'];
     $estilo = $_POST['estilo'];
     $dificuldade = $_POST['dificuldade'];
+    $estiloCarro = $_SESSION['estiloCarro'];
 
     if ($nomeJogador == null || ''){
         $nomeJogador = 'Jogador';
@@ -18,6 +19,7 @@
 
     echo "<script>
         const nomeJogador = '$nomeJogador';
+        const estiloCarro = '$estiloCarro';
         const estilo = '$estilo';
         const dificuldade = '$dificuldade';
         const tempoMax = 2;
