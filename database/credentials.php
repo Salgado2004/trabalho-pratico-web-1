@@ -1,6 +1,6 @@
 <?php
   $servername = "localhost";
   $username = "root";
-  $password = "password";
+  $password = "@Also1227";
   $dbname = "WordRunner";
 ?>
