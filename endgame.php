@@ -29,7 +29,8 @@
             die("Error: Requisição incorreta\n");
             fwrite($file, date('l jS \of F Y h:i:s A') . "Error: Requisição incorreta\n");
         }
-
+    
+        date_default_timezone_set('America/Sao_Paulo');
         $data = date('Y-m-d H:i:s');
 
         require("database/credentials.php");
