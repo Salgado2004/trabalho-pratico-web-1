@@ -1,8 +1,18 @@
 <?php
-
+    
     $file = fopen("log.txt", "a");
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
         session_start();
+
+        require("database/credentials.php");
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        if (!$conn) {
+            die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
+            fwrite($file, date('l jS \of F Y h:i:s A') . "Falha na conexão com o banco de dados: " . mysqli_connect_error() . "\n");
+        }
+
+
         if (isset($_SESSION['id_usuario'])){
             $id_usuario = $_SESSION['id_usuario'];
         } else{
@@ -31,13 +41,6 @@
         }
 
         $data = date('Y-m-d H:i:s');
-
-        require("database/credentials.php");
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        if (!$conn) {
-            die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
-            fwrite($file, date('l jS \of F Y h:i:s A') . "Falha na conexão com o banco de dados: " . mysqli_connect_error() . "\n");
-        }
 
         $sql = "use $dbname";
         if (!mysqli_query($conn, $sql)) {

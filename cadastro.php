@@ -1,14 +1,6 @@
 <?php
 require('database/credentials.php');
-
-function verifica_campo($conn, $texto)
-{
-  $texto = trim($texto);
-  $texto = stripslashes($texto);
-  $texto = htmlspecialchars($texto);
-  $texto = mysqli_real_escape_string($conn, $texto);
-  return $texto;
-}
+require('verifica_campo.php');
 
 $nome = "";
 $email = "";
@@ -70,6 +62,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               } else {
                 echo "<br>Usuario inserido com sucesso<br>";
               }
+
+              $sql = "SELECT id FROM usuario WHERE email = '" . $email . "'";
+              if (!mysqli_query($conn, $sql)) {
+                die("Error connecting to database: " . mysqli_error($conn) . "<br>");
+              } else {
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                  $id = mysqli_fetch_row($result);
+                } else {
+                  die("Error: " . $sql . "<br>" . mysqli_error($conn));
+                }
+              }
             }
           }
         }
@@ -80,12 +84,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (!$erro) {
     session_start();
+    $_SESSION['id_usuario'] = $id[0];
     $_SESSION['nome_usuario'] = $nome;
     $_SESSION['existe_liga'] = false;
     $_SESSION['email_usuario'] = $email;
     $_SESSION['liga_usuario'] = "Sem liga";
+    $_SESSION['estiloCarro'] = 1;
+    mysqli_close($conn);
     header("Location: user/edit_user.php");
   } else {
+    mysqli_close($conn);
     header("Location: signup.php/?ec=" . $erro);
   }
 
