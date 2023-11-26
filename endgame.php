@@ -23,7 +23,6 @@
         if (isset($_POST['time'])){
             $tempoFormatado = getdate($_POST['time']);
             $time = $tempoFormatado['hours'] . ":" . $tempoFormatado['minutes'] . ":" . $tempoFormatado['seconds'];
-            $time = verifica_campo($conn, $time);
         } else{
             $time = null;
         }
@@ -38,7 +37,7 @@
         }
 
         if (isset($_POST['modo'])){
-            if(is_bool($_POST['modo'])){
+            if(is_numeric($_POST['modo'])){
                 $modo = $_POST['modo'];
             }
         } else{
