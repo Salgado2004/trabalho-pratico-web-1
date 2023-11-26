@@ -75,7 +75,7 @@
         echo "Error connecting to database: " . mysqli_error($conn) . "<br>";
       }
     } else {
-      header("Location: signup.php/?e=" . $erro);
+      header("Location: signup.php/?el=" . $erro);
     }
 }
 
