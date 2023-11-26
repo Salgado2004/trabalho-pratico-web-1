@@ -6,4 +6,5 @@ function verifica_campo($conn, $texto){
         $texto = mysqli_real_escape_string($conn, $texto);
         return $texto;
     }
+
 ?>
