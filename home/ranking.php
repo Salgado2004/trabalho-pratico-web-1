@@ -45,6 +45,18 @@
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
 
+    $sql = "SELECT liga.nome, count(usuario.id) as participantes FROM liga INNER JOIN usuario ON usuario.fk_liga = liga.id WHERE liga.id = " . $_SESSION['liga_usuario']." GROUP BY liga.id";
+    if(mysqli_query($conn, $sql)){
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $nomeLiga = $row['nome'];
+        $participantes = $row['participantes'];
+    } else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+
     $nomeUsuario = $_SESSION['nome_usuario'];
     $scope = $_GET['scope'];
 ?>
@@ -60,6 +72,12 @@
     <link rel="stylesheet" href="../style/ranking.css">
 </head>
 <body>
+    <header>
+        <?php if ($scope == "liga") : ?>
+            <h1 class="league"><?php echo $nomeLiga; ?></h1>
+            <span class="participants"><?php echo $participantes; ?> participantes</span>
+        <?php endif; ?>
+    </header>
     <main>
         <table>
             <tr>
