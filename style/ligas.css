@@ -44,6 +44,8 @@ table td div{
 table td div img{
     border-radius: 50%;
     margin-right: 10px;
+    width: 40px;
+    height: 40px;
 }
 
 table td div span{
