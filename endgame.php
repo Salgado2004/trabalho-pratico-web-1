@@ -1,5 +1,5 @@
 <?php
-    
+    require('verifica_campo.php');
     $file = fopen("log.txt", "a");
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         
@@ -12,9 +12,10 @@
             fwrite($file, date('l jS \of F Y h:i:s A') . "Falha na conexão com o banco de dados: " . mysqli_connect_error() . "\n");
         }
 
-
         if (isset($_SESSION['id_usuario'])){
-            $id_usuario = $_SESSION['id_usuario'];
+            if(is_numeric($_SESSION['id_usuario'])){
+              $id_usuario = $_SESSION['id_usuario'];
+            }
         } else{
             header("Location: ../login/login.php");
         }
@@ -22,19 +23,24 @@
         if (isset($_POST['time'])){
             $tempoFormatado = getdate($_POST['time']);
             $time = $tempoFormatado['hours'] . ":" . $tempoFormatado['minutes'] . ":" . $tempoFormatado['seconds'];
+            $time = verifica_campo($conn, $time);
         } else{
             $time = null;
         }
 
         if (isset($_POST['points'])){
-            $pontos = $_POST['points'];
+            if(is_numeric($_POST['points'])){
+                $pontos = $_POST['points'];
+            }
         } else{
             die("Error: Requisição incorreta\n");
             fwrite($file, date('l jS \of F Y h:i:s A') . "Error: Requisição incorreta\n");
         }
 
         if (isset($_POST['modo'])){
-            $modo = $_POST['modo'];
+            if(is_bool($_POST['modo'])){
+                $modo = $_POST['modo'];
+            }
         } else{
             die("Error: Requisição incorreta\n");
             fwrite($file, date('l jS \of F Y h:i:s A') . "Error: Requisição incorreta\n");
