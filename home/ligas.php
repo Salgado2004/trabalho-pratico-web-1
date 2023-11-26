@@ -55,7 +55,7 @@
             <tr>
                 <td>
                     <div>
-                        <img src="../assets/img/profiles/liga1.webp" alt="Liga">
+                        <img src="../assets/img/profiles/liga<?php echo $liga['imagem']; ?>.png" alt="Liga">
                         <?php echo $liga['nome']; ?>
                         <?php if ($liga['private']==1) : ?>
                             <span class="material-symbols-outlined">lock</span>
