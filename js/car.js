@@ -95,7 +95,7 @@ const player = new car({
         x: 100,
         y: 576/2-40
     },
-    source: "assets/img/carros/carro1.png",
+    source: `assets/img/carros/carro${estiloCarro}.png`,
     speed: baseSpeed
 });
 
