@@ -6,9 +6,9 @@
         header("Location: ../index.html");
     }
 
-    if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/user/user.php"){
+    /* if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/user/user.php"){
         header("Location: ../user/user.php");
-    }
+    } */
 
 
 ?>

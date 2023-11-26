@@ -6,9 +6,9 @@
         header("Location: ../index.html");
     }
 
-    if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/home.php"){
+    /* if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/home.php"){
         header("Location: ../home/home.php");
-    }
+    } */
 
     $nomeUsuario = $_SESSION['nome_usuario'];
 ?>

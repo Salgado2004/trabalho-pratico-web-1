@@ -18,11 +18,11 @@
             "Nome de usuário já cadastrado"
         ];
 
-    if (isset($_GET['e'])){
-        $erro_log = $_GET['e'];
+    if (isset($_GET['el'])){
+        $erro_log = $_GET['el'];
     }
-    if (isset($_GET['E'])){
-        $erro_cad = $_GET['E'];
+    if (isset($_GET['ec'])){
+        $erro_cad = $_GET['ec'];
     }
 ?>
 

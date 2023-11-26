@@ -6,9 +6,9 @@
         header("Location: ../index.html");
     }
 
-    if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/ranking.php"){
+    /* if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/ranking.php"){
         header("Location: ../home/home.php");
-    }
+    } */
 ?>
 
 <!DOCTYPE html>
