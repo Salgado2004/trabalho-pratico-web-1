@@ -21,7 +21,7 @@
         id int auto_increment primary key,
         modo_jogo boolean not null,
         tempo time,
-        pountuacao int not null,
+        pontuacao int not null,
         data_reg timestamp,
         fk_usuario int not null
     );
