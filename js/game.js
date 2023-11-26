@@ -164,7 +164,12 @@ function finish(){
         let request = new XMLHttpRequest();
         request.open("POST", "endgame.php", true);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        request.send(`points=${points}`);
+        const params = new URLSearchParams();
+        params.append('points', encodeURIComponent(points));
+        params.append('time', encodeURIComponent(time.totalSegundos));
+        params.append('modo', '0');
+
+        request.send(params.toString());
 
         setTimeout(() => {
             window.location.href = "home/home.php";
