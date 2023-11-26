@@ -25,7 +25,25 @@
             "reduto",
             "descer",
             "nevada",
-            "sábado"
+            "sábado",
+            "sabugo",
+            "luz",
+            "paz",
+            "amor",
+            "vida",
+            "fogo",
+            "água",
+            "terra",
+            "ar",
+            "frio",
+            "quente",
+            "morno",
+            "azul",
+            "verde",
+            "preto",
+            "branco",
+            "cinza",
+            "rosa"
         ],
         "medio":[
             "gangorra",
@@ -38,9 +56,22 @@
             "abóbora",
             "elipse",
             "humanidade",
-            "sabedoria"
+            "sabedoria",
+            "esmeralda",
+            "ventilador",
+            "paralelo",
+            "luminoso",
+            "sorvete",
+            "maravilha",
+            "pretinho",
+            "enigma",
+            "floresta",
+            "ilusão"
         ],
         "dificil":[
+            
+        ],
+        "impossivel":[
             "hipotérmico",
             "inconstitucional",
             "inconstitucionalissimamente",

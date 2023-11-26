@@ -1,14 +1,6 @@
 <?php
 require('database/credentials.php');
-
-function verifica_campo($conn, $texto)
-{
-  $texto = trim($texto);
-  $texto = stripslashes($texto);
-  $texto = htmlspecialchars($texto);
-  $texto = mysqli_real_escape_string($conn, $texto);
-  return $texto;
-}
+require('verifica_campo.php');
 
 $nome = "";
 $email = "";
@@ -39,36 +31,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $erro = 3;
     } else if (strlen($_POST["senha-cad"]) < 8) {
       $erro = 4;
-    } else if ($_POST["senha-cad"]) {
-      $erro = 5;
-    } else if (!preg_match('[A-Z]', $_POST["senha-cad"])) {
+    } else if (!preg_match('/[A-Z]/', $_POST["senha-cad"])) {
       $erro = 5;
     } else if (empty($_POST["senha-confirm"])) {
       $erro = 7;
-    } else if ($_POST["senha"] != $_POST["senha-conf"]) {
+    } else if ($_POST["senha-cad"] != $_POST["senha-confirm"]) {
       $erro = 8;
     } else {
       $sql = "SELECT * FROM usuario WHERE email = '" . $_POST["email-cad"] . "'";
       $result = mysqli_query($conn, $sql);
       if ($result) {
-        $erro = 12;
-      } else {
-        $sql = "SELECT * FROM usuario WHERE nome = '" . $_POST["nome-cad"] . "'";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-          $erro = 13;
+        if (mysqli_num_rows($result) > 0) {
+          $erro = 12;
         } else {
-          $nome = verifica_campo($conn, $_POST["nome-cad"]);
-          $email = verifica_campo($conn, $_POST["email-cad"]);
-          $senha = verifica_campo($conn, $_POST["senha-cad"]);
-          $senha_conf = verifica_campo($conn, $_POST["senha-conf"]);
+          $sql = "SELECT * FROM usuario WHERE nome = '" . $_POST["nome-cad"] . "'";
+          $result = mysqli_query($conn, $sql);
+          if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+              $erro = 13;
+            } else {
+              $nome = verifica_campo($conn, $_POST["nome-cad"]);
+              $email = verifica_campo($conn, $_POST["email-cad"]);
+              $senha = verifica_campo($conn, $_POST["senha-cad"]);
+              $senha_conf = verifica_campo($conn, $_POST["senha-confirm"]);
 
-          $sql = "INSERT INTO usuario (nome, email, senha) VALUES ('" . $nome . "', '" . $email . "', '" . md5($senha) . "')";
+              $sql = "INSERT INTO usuario (nome, email, senha) VALUES ('" . $nome . "', '" . $email . "', '" . md5($senha) . "')";
 
-          if (!mysqli_query($conn, $sql)) {
-            $erro = 9;
-          } else {
-            echo "<br>Usuario inserido com sucesso<br>";
+              if (!mysqli_query($conn, $sql)) {
+                $erro = 9;
+              } else {
+                echo "<br>Usuario inserido com sucesso<br>";
+              }
+
+              $sql = "SELECT id FROM usuario WHERE email = '" . $email . "'";
+              if (!mysqli_query($conn, $sql)) {
+                die("Error connecting to database: " . mysqli_error($conn) . "<br>");
+              } else {
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                  $id = mysqli_fetch_row($result);
+                } else {
+                  die("Error: " . $sql . "<br>" . mysqli_error($conn));
+                }
+              }
+            }
           }
         }
       }
@@ -78,13 +84,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (!$erro) {
     session_start();
+    $_SESSION['id_usuario'] = $id[0];
     $_SESSION['nome_usuario'] = $nome;
     $_SESSION['existe_liga'] = false;
-    $_SESSION['email_usuario'] = $email;  
+    $_SESSION['email_usuario'] = $email;
     $_SESSION['liga_usuario'] = "Sem liga";
+    $_SESSION['estiloCarro'] = 1;
+    mysqli_close($conn);
     header("Location: user/edit_user.php");
   } else {
-    header("Location: signup.php?ec=" . $erro);
+    mysqli_close($conn);
+    header("Location: signup.php/?ec=" . $erro);
   }
 
   mysqli_close($conn);
