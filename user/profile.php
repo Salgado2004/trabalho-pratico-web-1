@@ -22,7 +22,7 @@
     }
 
     $id_usuario = $_SESSION['id_usuario'];
-    $sql = "SELECT usuario.nome, email, usuario.imagem, usuario.carro, liga.nome, pontuacao.pontuacao, pontuacao.data_reg FROM usuario INNER JOIN liga ON usuario.fk_liga = liga.id INNER JOIN pontuacao ON pontuacao.fk_usuario = usuario.id WHERE usuario.id = $id_usuario GROUP BY pontuacao.pontuacao ORDER BY pontuacao.pontuacao DESC LIMIT 1";
+    $sql = "SELECT usuario.nome, email, usuario.imagem, usuario.carro, usuario.fk_liga FROM usuario WHERE usuario.id = $id_usuario";
     if (mysqli_query($conn, $sql)) {
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_row($result);
@@ -30,10 +30,36 @@
         $email = $row[1];
         $imagem = $row[2];
         $carro = $row[3];
-        $liga = $row[4];
-        $pontuacao = $row[5];
-        $data = $row[6];
-        $date = strtotime($data);
+        $fk_liga = $row[4];
+    } else{
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    if ($fk_liga == NULL) {
+        $liga = "Sem liga";
+    } else{
+        $sql = "SELECT liga.nome FROM liga WHERE liga.id = $fk_liga";
+        if (mysqli_query($conn, $sql)) {
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_row($result);
+            $liga = $row[0];
+        } else{
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    
+    $sql = "SELECT pontuacao, pontuacao.data_reg FROM pontuacao WHERE fk_usuario = $id_usuario ORDER BY pontuacao DESC LIMIT 1";
+    if (mysqli_query($conn, $sql)) {
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) == 0) {
+            $highScore = "Não há pontuações registradas";
+        } else{
+            $row = mysqli_fetch_row($result);
+            $pontuacao = $row[0];
+            $data = $row[1];
+            $date = date('d/m/Y, H:i', strtotime($data));
+            $highScore = $pontuacao . " pontos em " . $date;
+        }
     } else{
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -75,9 +101,7 @@
             </div>
             <div id="user-best-score">
                 <h3>Melhor pontuação</h3>
-                <h4><?php echo $pontuacao; ?> pontos em
-                    <span><?php echo date('d/m/Y, H:i', $date); ?></span>
-                </h4>
+                <h4><?php echo $highScore; ?></h4>
         </section>
     </main>
 </body>
