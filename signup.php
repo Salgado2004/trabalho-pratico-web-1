@@ -16,6 +16,8 @@
             "Erro ao acessar banco de dados.",
             "Email já cadastrado.",
             "Nome de usuário já cadastrado",
+            "Senha incorreta!",
+            "Usuário não cadastrado"
         ];
 
     if (isset($_GET['el'])){
