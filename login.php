@@ -49,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $_SESSION['email_usuario'] = $email;
           $_SESSION['liga_usuario'] = $liga;
           $_SESSION['estiloCarro'] = $row['carro'];
+          $_SESSION['estiloPerfil'] = $row['imagem'];
           mysqli_close($conn);
           header("Location: home/home.php");
         } else {
