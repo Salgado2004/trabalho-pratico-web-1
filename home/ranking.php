@@ -29,10 +29,22 @@ if (!mysqli_query($conn, $sql)) {
     echo "Error connecting to database: " . mysqli_error($conn) . "<br>";
 }
 
+$filterDate = "AND pontuacao.data_reg > DATE_SUB(NOW(), INTERVAL 7 DAY)";
+$filter = "week";
+if (isset($_GET['filter'])) {
+    if ($_GET['filter'] == "month") {
+        $filterDate = "AND pontuacao.data_reg > DATE_SUB(NOW(), INTERVAL 30 DAY)";
+        $filter = "month";
+    } else if ($_GET['filter'] == "week") {
+        $filterDate = "AND pontuacao.data_reg > DATE_SUB(NOW(), INTERVAL 7 DAY)";
+        $filter = "week";
+    }
+}
+
 if ($_GET['scope'] == "geral") {
-    $sql = "SELECT nome, imagem, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id GROUP BY usuario.id ORDER BY pontuacao DESC;";
+    $sql = "SELECT nome, imagem, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id $filterDate GROUP BY usuario.id ORDER BY pontuacao DESC;";
 } else {
-    $sql = "SELECT nome, imagem, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id WHERE usuario.fk_liga = " . $_SESSION['liga_usuario'] . " GROUP BY usuario.id ORDER BY pontuacao DESC";
+    $sql = "SELECT nome, imagem, sum(pontuacao) as pontuacao FROM pontuacao INNER JOIN usuario ON pontuacao.fk_usuario = usuario.id WHERE usuario.fk_liga = " . $_SESSION['liga_usuario'] . " $filterDate GROUP BY usuario.id ORDER BY pontuacao DESC";
 }
 
 $ranking = array();
@@ -82,6 +94,11 @@ $scope = $_GET['scope'];
             <h1 class="league"><?php echo $nomeLiga; ?></h1>
             <span class="participants"><?php echo $participantes; ?> participantes</span>
         <?php endif; ?>
+        <div class="data">
+            <p>Últimos</p>
+            <a href="ranking.php?scope=<?php echo $scope; ?>&filter=week" class="<?php if($filter == 'week') echo "active"; ?>">7 dias</a>
+            <a href="ranking.php?scope=<?php echo $scope; ?>&filter=month" class="<?php if($filter == 'month') echo "active"; ?>">30 dias</a>
+        </div>
     </header>
     <main>
         <table>
