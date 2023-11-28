@@ -87,8 +87,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['email_usuario'] = $email;
     $_SESSION['liga_usuario'] = "Sem liga";
     $_SESSION['estiloCarro'] = 1;
+    $_SESSION['estiloPerfil'] = 1;
     
-    header("Location: user/edit_user.php");
+    header("Location: user/user.php");
   } else {
     header("Location: signup.php/?ec=" . $erro);
   }
