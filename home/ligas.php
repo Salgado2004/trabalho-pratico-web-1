@@ -63,9 +63,9 @@
                     </div>
                 </td>
                 <td>
-                    <form action="../database/entrarLiga.php" method="post">
+                    <form action="../liga/entra_liga.php" method="post">
                         <input type="hidden" name="idLiga" value="<?php echo $liga['id']; ?>">
-                        <button type="submit" name="entrarLiga" value="entrarLiga">Entrar</button>
+                        <button type="submit" name="entrarLiga" value="entrarLiga" <?php if($_SESSION['existe_liga']) echo "disabled"; ?>>Entrar</button>
                     </form>
                 </td>
             </tr>
