@@ -79,6 +79,20 @@ header .data a.active::after{
     font-size: 11pt;
 }
 
+.leave_league{
+    font-family: 'Formula 1 regular';
+    color: #d9d9d9;
+    display: block;
+    background-color: #d63c3c;
+    width: 25%;
+    padding: 6px;
+    margin: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
 main{
     display: flex;
     flex-direction: column;
