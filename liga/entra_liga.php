@@ -7,6 +7,7 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $erroSenha=false;
         $idUsuario = $_SESSION['id_usuario'];
         if (isset($_POST['idLiga']) && is_numeric($_POST['idLiga'])){
             $idLiga = $_POST['idLiga'];
@@ -33,14 +34,18 @@
                         $private = $row['private'];
                         $senha = $row['senha'];
                         if ($private==1){
-                            if (isset($_POST['senha']) && md5($_POST['senha'])==$senha){
-                                $sql = "UPDATE usuario SET fk_liga=$idLiga WHERE id=$idUsuario;";
-                                if (mysqli_query($conn, $sql)) {
-                                    $_SESSION['liga_usuario'] = $idLiga;
-                                    $_SESSION['existe_liga'] = true;
-                                    header("Location: ../home/ranking.php?scope=liga");
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            if (isset($_POST['senha'])){
+                                if(md5($_POST['senha'])==$senha){
+                                    $sql = "UPDATE usuario SET fk_liga=$idLiga WHERE id=$idUsuario;";
+                                    if (mysqli_query($conn, $sql)) {
+                                        $_SESSION['liga_usuario'] = $idLiga;
+                                        $_SESSION['existe_liga'] = true;
+                                        header("Location: ../home/ranking.php?scope=liga");
+                                    } else {
+                                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                    }
+                                } else{
+                                    $erroSenha=true;
                                 }
                             }
                         } else{
@@ -84,6 +89,9 @@
                 <input type="hidden" name="idLiga" value="<?php echo $idLiga; ?>">
                 <label for="senha">Digite a senha da liga para entrar</label>
                 <input type="password" name="senha" placeholder="Senha">
+                <?php if($erroSenha): ?>
+                    <span class="erro">Senha incorreta</span>
+                <?php endif; ?>
                 <button type="submit" name="entrarLiga" value="entrarLiga">Entrar</button>
             </form>
         </main>
