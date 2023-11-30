@@ -66,8 +66,11 @@
         if (!mysqli_query($conn, $sql)) {
             echo "Error connecting to database: " . mysqli_error($conn) . "<br>";
         }
-
-        $sql = "INSERT INTO liga (nome, private, imagem, senha, fk_criador) VALUES ('$nomeLiga', $private, $imagem, '$senha', ".$_SESSION["id_usuario"].")";
+        if($senha==NULL){
+            $sql = "INSERT INTO liga (nome, private, imagem, senha, fk_criador) VALUES ('$nomeLiga', $private, $imagem, NULL, ".$_SESSION["id_usuario"].")";
+        } else {
+            $sql = "INSERT INTO liga (nome, private, imagem, senha, fk_criador) VALUES ('$nomeLiga', $private, $imagem, '$senha', ".$_SESSION["id_usuario"].")";
+        }
         if(mysqli_query($conn, $sql)){
             $_SESSION["existe_liga"]=true;
             $sql = "SELECT id FROM liga WHERE fk_criador=".$_SESSION["id_usuario"];
