@@ -73,8 +73,8 @@
         </table>
     </main>
     <footer>
-        <form action="../database/criarLiga.php" method="post" id="criarLiga">
-            <button type="submit" name="criarLiga" value="criarLiga">Criar Liga</button>
+        <form action="../liga/manage_liga.php" method="get" id="criarLiga">
+            <button type="submit" name="criarLiga" value="criarLiga" <?php if($_SESSION['existe_liga']) echo 'disabled'; ?>>Criar Liga</button>
         </form>
     </footer>
     <script src="../script/ligas.js"></script>
