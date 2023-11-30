@@ -90,6 +90,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     header("Location: user/edit_user.php");
   } else {
-    header("Location: signup.php/?ec=" . $erro);
+    header("Location: signup.php?ec=" . $erro);
   }
 }
