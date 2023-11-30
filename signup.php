@@ -10,7 +10,7 @@
             "Senha deve ter pelo menos uma letra maiúscula.",
             "Nome é obrigatório.",
             "Confirmação de senha é obrigatória.",
-            "Confirmação de senha deve ser igual à senha.",
+            "As senhas não conferem!.",
             "Erro ao criar usuário.",
             "Erro ao selecionar banco de dados.",
             "Erro ao acessar banco de dados.",
@@ -36,6 +36,8 @@
     <title>Word Runner | Login</title>
     <link rel="stylesheet" href="style/fonts.css">
     <link rel="stylesheet" href="style/login.css">
+    <script src="js/check_login.js"></script>
+    <script src="js/check_cadastro.js"></script>
 </head>
 <body>
     <main>
@@ -55,6 +57,7 @@
                 <?php endif; ?>
                 <button type="submit">Entrar</button>
             </form>
+
             <form id="cadastro" action="cadastro.php" method="post">
                 <legend>Cadastro</legend>
                 <div class="form-input">
