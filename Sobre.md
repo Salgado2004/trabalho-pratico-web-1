@@ -46,13 +46,13 @@ A aplicação desenvolvida deve atender os seguintes requisitos:
  **Front-end**:
   - [x] Uso de HTML5, CSS3 e JS;
   - [x] Interface amigável;
-  - [ ] Validação de campos de formulário;
+  - [x] Validação de campos de formulário;
   - [x] Implementação do Jogo de digitação completamente em JS;
       
  **Back-end**:
   - [x] Integração com um banco de dados;
-  - [ ] Sistema de autenticação/autorização de usuário(s) salvo(s) em banco de dados;
-  - [ ] Validação de campos de formulário e outras informações recebidas.
+  - [x] Sistema de autenticação/autorização de usuário(s) salvo(s) em banco de dados;
+  - [x] Validação de campos de formulário e outras informações recebidas.
 
 ## Ambiente de Desenvolvimento
 

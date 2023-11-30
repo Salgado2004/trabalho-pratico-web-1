@@ -17,7 +17,55 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
+
+header .data{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+header .data p{
+    margin: 4px;
+    font-family: 'Formula 1 bold';
+    color: #d9d9d9;
+}
+
+header .data a{
+    position: relative;
+    font-family: 'Formula 1 regular';
+    color: #d9d9d9;
+    text-decoration: none;
+}
+
+header .data a::before{
+    position: absolute;
+    left: -18px;
+    top: 4px;
+    content: ' ';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #252525;
+    border: 1px solid #d9d9d9;
+}
+
+header .data a.active::after{
+    position: absolute;
+    left: -16px;
+    top: 6px;
+    content: ' ';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+}
+
+
 
 .league{
     font-family: 'Formula 1 bold';
@@ -29,6 +77,42 @@ header{
     font-family: 'Formula 1 regular';
     color: #d9d9d9;
     font-size: 11pt;
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.leave_league{
+    font-family: 'Formula 1 regular';
+    color: #d9d9d9;
+    display: block;
+    background-color: #d63c3c;
+    width: 25%;
+    padding: 6px;
+    margin: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit_league{
+    font-family: 'Formula 1 regular';
+    color: #252525;
+    display: block;
+    background-color: #d9d9d9;
+    width: 25%;
+    padding: 6px;
+    margin: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
 }
 
 main{
