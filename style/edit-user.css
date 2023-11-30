@@ -162,3 +162,11 @@ button[type="submit"]{
 button[type="submit"]:hover{
     cursor: pointer;
 }
+
+.erro-input {
+    font-family: 'Formula 1 regular';
+    color: #d63c3c;
+    font-size: 10pt;
+    margin-top: 10px;
+    margin-left: 10px;    
+}
