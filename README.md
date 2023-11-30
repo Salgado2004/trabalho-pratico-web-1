@@ -28,7 +28,7 @@ Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar. Ao
 - HTML / CSS
 - JS
 
-# Banco de Dados
+## Banco de Dados
 - MySql
 
 # Como foi criado
