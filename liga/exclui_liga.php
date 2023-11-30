@@ -9,6 +9,7 @@
     if (!isset($_SESSION['existe_liga'])){
         header("Location: ../home/ligas.php");
     } else{
+        $erroSenha=false;
         $idUsuario = $_SESSION['id_usuario'];
         $idLiga = $_SESSION['liga_usuario'];
 
@@ -43,7 +44,7 @@
                         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                     }
                 } else {
-                    echo "<script>alert('Senha incorreta!');</script>";
+                    $erroSenha=true;
                 }
             }
         } else {
@@ -71,7 +72,10 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <label for="senha">Digite sua senha para confirmar: </label>
             <input type="password" name="senha" placeholder="Senha">
-            <button type="submit" name="confirm">Entrar</button>
+            <?php if($erroSenha): ?>
+                <span class="erro">Senha incorreta</span>
+            <?php endif; ?>
+            <button type="submit" name="confirm">Confirmar</button>
         </form>
     </main>
 </body>
