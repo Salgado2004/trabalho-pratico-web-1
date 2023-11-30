@@ -48,17 +48,21 @@
         }
     }
     
-    $sql = "SELECT pontuacao, pontuacao.data_reg FROM pontuacao WHERE fk_usuario = $id_usuario ORDER BY pontuacao DESC LIMIT 1";
+    $sql = "SELECT pontuacao, pontuacao.data_reg FROM pontuacao WHERE fk_usuario = $id_usuario ORDER BY pontuacao DESC";
     if (mysqli_query($conn, $sql)) {
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) == 0) {
             $highScore = "Não há pontuações registradas";
         } else{
-            $row = mysqli_fetch_row($result);
-            $pontuacao = $row[0];
-            $data = $row[1];
-            $date = date('d/m/Y, H:i', strtotime($data));
-            $highScore = $pontuacao . " pontos em " . $date;
+            $history = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                if (!isset($highScore)) {
+                    $highScore = $row['pontuacao'] . " pontos em " . date('d/m/Y, H:i', strtotime($row['data_reg']));
+                } else{
+                    array_push($history, $row['pontuacao'] . " pontos em " . date('d/m/Y, H:i', strtotime($row['data_reg'])));
+                }
+            }
+
         }
     } else{
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -90,18 +94,31 @@
             <div id="user-img">
                 <img src="../assets/img/profiles/user<?php echo $imagem; ?>.png" alt="User">
             </div>
-            <h3>Nome: <?php echo $nome; ?></h3>
-            <p>Email: <?php echo $email; ?></p>
-            <p>Liga: <?php echo $liga; ?></p>
+            <div id="user-main-info">
+                <h3>Nome: <?php echo $nome; ?></h3>
+                <p>Email: <?php echo $email; ?></p>
+                <p>Liga: <?php echo $liga; ?></p>
+            </div>
+            <div id="user-best-score">
+                <h3>Melhor pontuação</h3>
+                <h4><?php echo $highScore; ?></h4>
+            </div>
         </section>
         <section id="extra-info">
             <div id="user-car">
                 <h3>Meu carro</h3>
                 <img src="../assets/img/carros/carro<?php echo $carro; ?>.png" alt="Car">
             </div>
-            <div id="user-best-score">
-                <h3>Melhor pontuação</h3>
-                <h4><?php echo $highScore; ?></h4>
+            <div id="historico">
+                <?php if (isset($history)): ?>
+                    <h3>Histórico</h3>
+                    <table class="hist">
+                    <?php foreach ($history as $value): ?>
+                        <tr><td><?php echo $value ?><td></tr>
+                    <?php endforeach; ?>
+                    </table>
+                <?php endif; ?>
+            </div>
         </section>
     </main>
 </body>
