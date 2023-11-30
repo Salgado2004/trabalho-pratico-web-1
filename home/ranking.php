@@ -59,12 +59,13 @@ if (mysqli_query($conn, $sql)) {
 if ($_GET['scope'] == "liga") {
 
 
-    $sql = "SELECT liga.nome, count(usuario.id) as participantes FROM liga INNER JOIN usuario ON usuario.fk_liga = liga.id WHERE liga.id = " . $_SESSION['liga_usuario'] . " GROUP BY liga.id";
+    $sql = "SELECT liga.nome, count(usuario.id) as participantes, fk_criador FROM liga INNER JOIN usuario ON usuario.fk_liga = liga.id WHERE liga.id = " . $_SESSION['liga_usuario'] . " GROUP BY liga.id";
     if (mysqli_query($conn, $sql)) {
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         $nomeLiga = $row['nome'];
         $participantes = $row['participantes'];
+        $criador = $row['fk_criador'];
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -122,6 +123,16 @@ $scope = $_GET['scope'];
             <?php $posicao++;
             endforeach; ?>
         </table>
+        <?php if ($scope == "liga"): ?>
+            <?php if ($criador == $_SESSION['id_usuario']): ?>
+                <div class="actions">
+                    <a href="../liga/manage_liga.php" class="edit_league">Editar liga</a>
+                    <a href="../liga/exclui_liga.php" class="leave_league">Excluir liga</a>
+                </div>
+            <?php else: ?>
+                <a href="../liga/sai_liga.php" class="leave_league">Sair da liga</a>
+            <?php endif; ?>
+        <?php endif; ?>
     </main>
 </body>
 
