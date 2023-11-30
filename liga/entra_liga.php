@@ -6,6 +6,7 @@
         header("Location: ../index.html");
     }
 
+    $private=0;
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $erroSenha=false;
         $idUsuario = $_SESSION['id_usuario'];
@@ -79,7 +80,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WordRunner | Ligas</title>
     <link rel="stylesheet" href="../style/fonts.css">
-    <link rel="stylesheet" href="../style/Entrarliga.css">
+    <link rel="stylesheet" href="../style/entrarLiga.css">
 </head>
 <body>
     <?php if($private==1): ?>
