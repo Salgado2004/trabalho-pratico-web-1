@@ -25,6 +25,12 @@ form label{
     margin: 6px;
 }
 
+.erro{
+    font-family: 'Formula 1 regular';
+    color: #d63c3c;
+    margin: 6px; 
+}
+
 form input{
     padding: 5px;
     border-radius: 10px;

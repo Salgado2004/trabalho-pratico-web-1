@@ -7,7 +7,7 @@
     }
 
     if (!isset($_SESSION['existe_liga'])){
-        header("Location: ../home/ligas.php");
+        header("Location: ../user/profile.php");
     } else{
         $erroSenha=false;
         $idUsuario = $_SESSION['id_usuario'];
@@ -30,13 +30,12 @@
             $senha = $row['senha'];
             if (isset($_POST['confirm'])){
                 if (md5($_POST['senha']) == $senha){
-                    $sql = "UPDATE usuario SET fk_liga=NULL WHERE fk_liga=$idLiga;";
+                    $sql = "DELETE FROM pontuacao WHERE fk_usuario=$idUsuario;";
                     if (mysqli_query($conn, $sql)) {
-                        $_SESSION['liga_usuario'] = NULL;
-                        $_SESSION['existe_liga'] = false;
-                        $sql = "DELETE FROM liga WHERE id=$idLiga;";
+                        $sql = "DELETE FROM usuario WHERE id=$idUsuario;";
                         if (mysqli_query($conn, $sql)) {
-                            header("Location: ../home/ligas.php");
+                            session_destroy();
+                            echo "<script>window.top.location = '../index.html'</script>";
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
@@ -68,7 +67,7 @@
 </head>
 <body>
     <main>
-        <h3>Ao excluir a liga não será possível recuperá-la</h3>
+        <h3>Ao excluir seu perfil não será possível recuperá-lo</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <label for="senha">Digite sua senha para confirmar: </label>
             <input type="password" name="senha" placeholder="Senha">
