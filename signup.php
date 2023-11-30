@@ -10,7 +10,7 @@
             "Senha deve ter pelo menos uma letra maiúscula.",
             "Nome é obrigatório.",
             "Confirmação de senha é obrigatória.",
-            "Confirmação de senha deve ser igual à senha.",
+            "As senhas não conferem!.",
             "Erro ao criar usuário.",
             "Erro ao selecionar banco de dados.",
             "Erro ao acessar banco de dados.",
