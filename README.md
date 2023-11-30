@@ -8,10 +8,10 @@ Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar. Ao
 
 # Features
 
--[X] Cadastro de usuários
--[X] Cadastro de ligas
--[X] Classificação por pontuação
--[X] Filtro por período 
+- [X] Cadastro de usuários
+- [X] Cadastro de ligas
+- [X] Classificação por pontuação
+- [X] Filtro por período 
 
 ## Layout mobile (colocar imagens do jogo!)
 exemplos:
@@ -26,7 +26,7 @@ exemplos:
 - HTML / CSS
 - JS
 
-#Banco de Dados
+# Banco de Dados
 - MySql
 
 # Como foi criado
@@ -49,8 +49,8 @@ git clone https://github.com/Salgado2004/trabalho-pratico-web-1
 
 # Autores
 
-Alisson Gabriel Santos
-André Luiz Morais de Brito
-Leonardo Felipe Salgado
-Pedro Felipe Ribeiro da Silva
+- Alisson Gabriel Santos
+- André Luiz Morais de Brito
+- Leonardo Felipe Salgado
+- Pedro Felipe Ribeiro da Silva
 
