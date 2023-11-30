@@ -63,9 +63,9 @@
                     </div>
                 </td>
                 <td>
-                    <form action="../database/entrarLiga.php" method="post">
+                    <form action="../liga/entra_liga.php" method="post">
                         <input type="hidden" name="idLiga" value="<?php echo $liga['id']; ?>">
-                        <button type="submit" name="entrarLiga" value="entrarLiga">Entrar</button>
+                        <button type="submit" name="entrarLiga" value="entrarLiga" <?php if($_SESSION['existe_liga']) echo "disabled"; ?>>Entrar</button>
                     </form>
                 </td>
             </tr>
@@ -73,8 +73,8 @@
         </table>
     </main>
     <footer>
-        <form action="../database/criarLiga.php" method="post" id="criarLiga">
-            <button type="submit" name="criarLiga" value="criarLiga">Criar Liga</button>
+        <form action="../liga/manage_liga.php" method="get" id="criarLiga">
+            <button type="submit" name="criarLiga" value="criarLiga" <?php if($_SESSION['existe_liga']) echo 'disabled'; ?>>Criar Liga</button>
         </form>
     </footer>
     <script src="../script/ligas.js"></script>
