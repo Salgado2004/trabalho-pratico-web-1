@@ -86,7 +86,7 @@
         <a class="edition" href="#">Alterar Senha</a>
         <a class="edition" href="edit_user.php">Editar Perfil</a>
         <div class="exclude">
-            <a href="#">Excluir Perfil</a>
+            <a href="del_user.php">Excluir Perfil</a>
         </div>
     </header>
     <main id="profile">
