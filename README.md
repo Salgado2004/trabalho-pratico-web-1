@@ -13,10 +13,12 @@ Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar. Ao
 - [X] Classificação por pontuação
 - [X] Filtro por período 
 
-## Layout mobile (colocar imagens do jogo!)
-exemplos:![home](https://github.com/Salgado2004/trabalho-pratico-web-1/blob/main/assets/img/prints/home.PNG)
-## Modelo conceitual (ideia esboçada sla)
-exemplos:
+## Tela de seleção
+![home](https://github.com/Salgado2004/trabalho-pratico-web-1/blob/main/assets/img/prints/home.PNG)
+## Tela de jogo
+![game](https://github.com/Salgado2004/trabalho-pratico-web-1/blob/main/assets/img/prints/jogo1.PNG)
+## Tela de liga
+![league](https://github.com/Salgado2004/trabalho-pratico-web-1/blob/main/assets/img/prints/minhaLiga.PNG)
 
 # Tecnologias utilizadas
 ## Back end
