@@ -2,9 +2,9 @@
 
 # Sobre o projeto
 
-Word Runner é um projeto full-stack realizado como entrega da atividade final de Desenvolvimento Web I, do curso Tecnólogo de Análise e Desenvolvimento de Sistemas da UFPR.
+Word Runner é um projeto full-stack realizado como entrega da atividade final de Desenvolvimento Web I, para o curso de Tecnologia em Análise e Desenvolvimento de Sistemas da UFPR.
 
-Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar. Ao logar, pode-se escolher a diiculdade desejada (fácil, médio, difícil ou impossível) para a corrida, em que o jogador entra em uma pista com mais carros, e para ganhar velocidade ele precisa digitar corretamente palavras que aparecerão no meio da pista, ganhando pontuação por acertos de digitação e colocação final da corrida. Além disso, você pode ingressar em ligas, que são grupos de jogadores que competem entre si.
+Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar, sendo a mesma personalizável (nome, endereço de e-mail, senha e avatar). Ao logar, pode-se escolher a dificuldade desejada (fácil, médio, difícil ou impossível) para a corrida, em que o jogador entra em uma pista com mais carros, e para ganhar velocidade e completar o total de voltas na pista, ele precisa digitar corretamente palavras que serão distintas conforme a dificuldade, que aparecerão na tela, ganhando pontuação por acertos de digitação e colocação final da corrida. Além disso, você pode ingressar em ligas, que são grupos de jogadores que competem entre si.
 
 # Features
 
@@ -33,11 +33,13 @@ Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar. Ao
 
 # Como foi criado
 
-O projeto está implementado em php, onde ocorre as funções de corrida, liga e gerenciamento do banco de dados. Utilizando JS para verificações de formulários e front-end junto do HTML/CSS para estruturação do site.
+O projeto está implementado em PHP, onde ocorre as funções de corrida, liga e gerenciamento do banco de dados. Utiliza-se JS para verificações de formulários e front-end junto do HTML/CSS para estruturação do site.
 
 # Como executar o projeto
 
-Pré-requisitos: XAMPP Control Panel v3.3.0
+Pré-requisitos: 
+- XAMPP Control Panel v3.3.0
+- MySql Workbench v8.0.34
 
 ```bash
 # clonar repositório dentro da pasta C:\xampp\htdocs
