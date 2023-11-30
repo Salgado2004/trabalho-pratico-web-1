@@ -114,6 +114,6 @@
         </form>
     </main>
 
-    <script src="../js/edit_user.js"></script>
+    <script src="../js/slider.js"></script>
 </body>
 </html>
