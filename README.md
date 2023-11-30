@@ -14,7 +14,7 @@ Consiste em um jogo de corrida, no qual o usuário cria sua conta para jogar. Ao
 - [X] Filtro por período 
 
 ## Layout mobile (colocar imagens do jogo!)
-exemplos:
+exemplos:![home](https://github.com/Salgado2004/trabalho-pratico-web-1/blob/main/assets/img/prints/home.PNG)
 ## Modelo conceitual (ideia esboçada sla)
 exemplos:
 
