@@ -37,6 +37,9 @@
 
     <link rel="stylesheet" href="style/fonts.css">
     <link rel="stylesheet" href="style/game.css">
+
+    
+    <link rel="shortcut icon" href="assets/img/profiles/user4.png" type="image/png">
 </head>
 <body>
     <main>

@@ -6,10 +6,6 @@
         header("Location: ../index.html");
     }
 
-    /* if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/home.php"){
-        header("Location: ../home/home.php");
-    } */
-
     $nomeUsuario = $_SESSION['nome_usuario'];
 ?>
 
@@ -38,13 +34,13 @@
                 <option value="jungle">Selva</option>
             </select>
         </div>
-        <div>
+        <!-- <div>
             <label for="modo">Modo de jogo:</label>
             <select name="modo" id="modo">
                 <option value="arcade">Arcade</option>
                 <option value="tempo">Tempo</option>
             </select>
-        </div>
+        </div> -->
         <div>
             <label for="dificuldade">Dificuldade:</label>
             <select name="dificuldade" id="dificuldade">
