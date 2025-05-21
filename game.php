@@ -3,7 +3,7 @@
     $nomeJogador = $_POST['nome-jogador'];
     $estilo = $_POST['estilo'];
     $dificuldade = $_POST['dificuldade'];
-    $estiloCarro = $_SESSION['estiloCarro'];
+    $estiloCarro = random_int(1, 6);
 
     if ($nomeJogador == null || ''){
         $nomeJogador = 'Jogador';
