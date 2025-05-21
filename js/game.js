@@ -161,7 +161,7 @@ function finish(){
         <h2>Total: ${points}</h2>`;
         document.body.appendChild(banner);
 
-        let request = new XMLHttpRequest();
+        /* let request = new XMLHttpRequest();
         request.open("POST", "endgame.php", true);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         const params = new URLSearchParams();
@@ -169,7 +169,7 @@ function finish(){
         params.append('time', encodeURIComponent(time.totalSegundos));
         params.append('modo', '0');
 
-        request.send(params.toString());
+        request.send(params.toString()); */
 
         setTimeout(() => {
             window.location.href = "home/home.php";

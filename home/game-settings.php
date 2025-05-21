@@ -1,18 +1,3 @@
-<?php
-
-    session_start();
-    if (!isset($_SESSION['nome_usuario'])) {
-        session_destroy();
-        header("Location: ../index.html");
-    }
-
-    /* if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) != "/home/home.php"){
-        header("Location: ../home/home.php");
-    } */
-
-    $nomeUsuario = $_SESSION['nome_usuario'];
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,9 +11,7 @@
     <form class="game-settings" action="../game.php" method="post" target="_parent">
         <div>
             <label for="nome-jogador">Nome do jogador:</label>
-            <?php
-              echo '<input type="text" name="nome-jogador" id="nome-jogador" value="'.$nomeUsuario.'" disabled>';
-            ?>
+            <input type="text" name="nome-jogador" id="nome-jogador" placeholder="Digite seu nome" required>;
         </div>
         <div>
             <label for="estilo">Cenário:</label>
